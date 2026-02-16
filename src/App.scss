@@ -1,0 +1,16 @@
+@import 'primereact/resources/primereact.min.css';
+@import 'primeicons/primeicons.css';
+@import 'primeflex/primeflex.css';
+
+@import '../design-system/tokens';
+@import '../design-system/helpers';
+@import '../design-system/layout';
+@import '../design-system/overrides/_primereact';
+
+@import '../design-system/uikit/styles/tokens';
+@import '../design-system/uikit/styles/styles';
+@import '../design-system/uikit/Grid/grid';
+@import '../design-system/uikit/Tree/tree';
+@import '../design-system/uikit/Message/message';
+@import '../design-system/uikit/DialogTabs/dialogTabs';
+@import '../design-system/uikit/StatusBadge/statusBadge';

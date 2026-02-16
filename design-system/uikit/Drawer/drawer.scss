@@ -1,0 +1,94 @@
+/**
+ * Стили Drawer (обёртка над PrimeReact Sidebar).
+ * Внешний вид как у модалки: скругление 3px, цвета текста, отступ 16px от краёв, шапка с кнопкой закрытия.
+ */
+@import '../styles/mixins';
+
+$drawer-inset: 16px;
+$drawer-radius: 3px;
+
+/* Отступ от краёв экрана — через padding маски */
+.p-sidebar-mask:has(.uikit-drawer) {
+    padding: $drawer-inset;
+    box-sizing: border-box;
+}
+
+.uikit-drawer {
+    &.p-sidebar {
+        background: var(--surface-card) !important;
+        border: 1px solid var(--surface-border);
+        border-radius: $drawer-radius;
+        box-shadow: 0 11px 15px -7px rgb(0 0 0 / 20%), 0 24px 38px 3px rgb(0 0 0 / 14%), 0 9px 46px 8px rgb(0 0 0 / 12%);
+        max-height: 100%;
+        box-sizing: border-box;
+
+        /* Шапка как у модалки: заголовок слева, кнопка закрытия справа */
+        .p-sidebar-header {
+            padding: 1rem 1rem 1rem 2rem;
+            background: var(--surface-card);
+            border-bottom: 1px solid var(--surface-border);
+            border-top-left-radius: $drawer-radius;
+            border-top-right-radius: $drawer-radius;
+            color: var(--text-color);
+            justify-content: space-between;
+            flex-shrink: 0;
+        }
+
+        .uikit-drawer__title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            line-height: 1.3rem;
+            color: var(--text-color);
+            margin-right: 0.5rem;
+        }
+
+        /* Кнопка закрытия как у модалки */
+        .p-sidebar-close {
+            width: 2rem;
+            height: 2rem;
+            min-width: 2rem;
+            min-height: 2rem;
+            margin-left: 0.5rem;
+            padding: 0;
+            background: transparent;
+            border: 0 none;
+            border-radius: 50%;
+            color: var(--text-color-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s, color 0.2s;
+
+            &:enabled:hover {
+                background: var(--surface-hover);
+                color: var(--text-color);
+            }
+
+            &:focus {
+                box-shadow: 0 0 0 1px #93cbf9;
+                outline: 0 none;
+            }
+        }
+
+        /* Контент — цвета как в модалке */
+        .p-sidebar-content {
+            @include scrollbar;
+            padding: 2rem;
+            overflow-y: auto;
+            background: var(--surface-card);
+            color: var(--text-color);
+            border-bottom-left-radius: $drawer-radius;
+            border-bottom-right-radius: $drawer-radius;
+
+            /* Вторичный текст (значения полей) */
+            .text-color-secondary {
+                color: var(--text-color-secondary);
+            }
+        }
+    }
+}
+
+.p-sidebar-mask {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(2px);
+}

@@ -1,0 +1,227 @@
+.p-treetable {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 0;
+    border-radius: 3px;
+
+    & .p-treetable-header {
+        flex-shrink: 0;
+        padding: 1rem;
+        background: var(--surface-card-header);
+        border: 1px solid var(--surface-border);
+        border-width: 0 0 1px;
+        color: var(--text-color-secondary);
+        font-weight: 600;
+    }
+
+    & &-scrollable-header-box {
+        margin-right: 0 !important;
+    }
+
+    & &-scrollable-body {
+        overflow: visible;
+    }
+
+    & &-scrollable-body-table, & &-scrollable-header-table {
+        border-collapse: separate;
+        border-spacing: 0;
+    }
+
+    & &-tbody > tr {
+        background: var(--surface-card);
+        color: var(--text-color);
+        outline-color: #93CBF9;
+        transition: box-shadow 0.2s;
+    }
+
+    & &-tbody > tr.p-rowgroup-header {
+        background: var(--surface-card-header);
+    }
+
+    & &-tbody > tr > td {
+        padding:  0.75rem 1rem;
+        border: 1px solid var(--surface-border);
+        border-width: 0 0 1px;
+        text-align: left;
+        outline-color: #93CBF9;
+    }
+
+    & &-tbody > tr > td .p-row-toggler,
+    & &-tbody > tr > td .p-row-editor-init,
+    & &-tbody > tr > td .p-row-editor-save,
+    & &-tbody > tr > td .p-row-editor-cancel {
+        width: 2rem;
+        height: 2rem;
+        background: transparent;
+        border: 0 none;
+        border-radius: 50%;
+        color: var(--text-color-secondary);
+        transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+    }
+
+    & &-tbody > tr > td .p-row-toggler:enabled:hover,
+    & &-tbody > tr > td .p-row-editor-init:enabled:hover,
+    & &-tbody > tr > td .p-row-editor-save:enabled:hover,
+    & &-tbody > tr > td .p-row-editor-cancel:enabled:hover {
+        background: var(--surface-hover);
+        border-color: transparent;
+        color: var(--text-color);
+    }
+
+    & &-tbody > tr > td .p-row-toggler:focus,
+    & &-tbody > tr > td .p-row-editor-init:focus,
+    & &-tbody > tr > td .p-row-editor-save:focus,
+    & &-tbody > tr > td .p-row-editor-cancel:focus {
+        box-shadow: 0 0 0 1px #93CBF9;
+        outline: 0 none;
+        outline-offset: 0;
+    }
+
+    & &-tbody > tr > td .p-row-editor-save {
+        margin-right: 0.5rem;
+    }
+
+    & &-tbody > tr > td > .p-column-title {
+        font-weight: 500;
+    }
+
+    & &-tbody > tr.p-highlight {
+        background: rgb(100 181 246 / 16%);
+        color: var(--text-color);
+    }
+
+    & &-tbody > tr.p-treetable-dragpoint-top > td {
+        box-shadow: inset 0 2px 0 0 rgb(100 181 246 / 16%);
+    }
+
+    & &-tbody > tr.p-treetable-dragpoint-bottom > td {
+        box-shadow: inset 0 -2px 0 0 rgb(100 181 246 / 16%);
+    }
+
+    &-hoverable-rows &-tbody > tr:not(.p-highlight):not(.p-treetable-emptymessage):hover {
+        background: var(--surface-hover);
+        color: var(--text-color);
+    }
+
+    & &-scrollable-header,
+    & &-scrollable-footer {
+        background: var(--surface-card);
+    }
+
+    & &-scrollable-wrapper &-scrollable-header {
+        position: sticky;
+        top: 0;
+        overflow: visible;
+        z-index: 5;
+    };
+
+    & .frozen-col-left {
+        position: sticky;
+        left: 0;
+        z-index: 1;
+        background: inherit;
+
+        &:not(.no-shadow) {
+            animation-duration: auto;
+            animation-name: shadow-right;
+            animation-timing-function: linear;
+            animation-timeline: scroll(nearest x);
+        }
+    }
+
+    & .frozen-col-right {
+        position: sticky;
+        right: 0;
+        z-index: 1;
+        background: inherit;
+
+        &:not(.no-shadow) {
+            animation-duration: auto;
+            animation-name: shadow-left;
+            animation-timing-function: linear;
+            animation-timeline: scroll(nearest x);
+        }
+    }
+
+    & .frozen-col {
+        position: sticky;
+        left: 0;
+        z-index: 1;
+        background: inherit;
+        animation-duration: auto;
+        animation-name: shadow-right;
+        animation-timing-function: linear;
+        animation-timeline: scroll(nearest x);
+    }
+
+    & &-thead > tr > th {
+        padding: 1rem;
+        background: var(--surface-card-header);
+        border: 1px solid var(--surface-border);
+        border-width: 0 0 1px;
+        color: var(--text-color);
+        font-weight: 500;
+        text-align: left;
+        transition: box-shadow 0.2s;
+    }
+
+    & .p-treetable-toggler {
+        margin: 0 1rem;
+        color: var(--text-color-secondary)
+    }
+
+    &-emptymessage > td {
+        text-align: center !important;
+    }
+
+    & .p-sortable-column .p-sortable-column-icon {
+        width: 0.64rem;
+        height: 0.57rem;
+        margin-left: 0.5rem;
+        color: var(--text-color-secondary);
+    }
+
+    & .p-sortable-column .p-sortable-column-badge {
+        min-width: 1.143rem;
+        height: 1.143rem;
+        margin-left: 0.5rem;
+        background: rgb(100 181 246 / 16%);
+        border-radius: 50%;
+        color: var(--text-color);
+        line-height: 1.143rem;
+    }
+
+    & .p-sortable-column:not(.p-highlight):not(.p-sortable-disabled):hover {
+        background: var(--surface-hover);
+        color: var(--text-color);
+    }
+
+    & .p-sortable-column:not(.p-highlight):not(.p-sortable-disabled):hover .p-sortable-column-icon {
+        background: var(--surface-hover);
+        color: var(--text-color);
+    }
+
+    & .p-sortable-column.p-highlight {
+        background: var(--surface-card-header);
+        color: var(--text-color);
+    }
+
+    & .p-sortable-column.p-highlight .p-sortable-column-icon {
+        color: #64B5F6;
+    }
+
+    & .p-sortable-column.p-highlight:not(.p-sortable-disabled):hover {
+        background: var(--surface-hover);
+        color: var(--text-color);
+    }
+
+    & .p-sortable-column.p-highlight:not(.p-sortable-disabled):hover .p-sortable-column-icon {
+        background: var(--surface-hover);
+        color: #64B5F6;
+    }
+
+    & .p-sortable-column:focus {
+        outline: 0 none;
+    }
+}

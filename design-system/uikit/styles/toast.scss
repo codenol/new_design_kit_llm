@@ -1,0 +1,101 @@
+.p-toast {
+    opacity: 0.9;
+    z-index: 5000;
+
+    &-message {
+        margin: 0 0 1rem;
+        border-radius: 3px;
+        box-shadow: none;
+    }
+
+    &-message .p-toast-message-content {
+        padding: 1rem;
+        border-width: 0 0 0 6px;
+    }
+
+    &-message .p-toast-message-content .p-toast-message-text {
+        margin: 0 0 0 1rem;
+    }
+
+    &-message .p-toast-message-content .p-toast-message-icon {
+        font-size: 2rem;
+    }
+
+    &-message .p-toast-message-content .p-toast-summary {
+        font-weight: 700;
+    }
+
+    &-message .p-toast-message-content .p-toast-detail {
+        margin: 0.5rem 0 0;
+    }
+
+    &-message .p-toast-icon-close {
+        width: 2rem;
+        height: 2rem;
+        background: transparent;
+        border-radius: 50%;
+        transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+    }
+
+    &-message .p-toast-icon-close:hover {
+        background: var(--surface-hover);
+    }
+
+    &-message .p-toast-icon-close:focus {
+        box-shadow: 0 0 0 1px #93CBF9;
+        outline: 0 none;
+        outline-offset: 0;
+    }
+
+    &-message.p-toast-message-info {
+        background: #B3E5FC;
+        border: solid #0891CF;
+        border-width: 0 0 0 6px;
+        color: #044868;
+    }
+
+    &-message.p-toast-message-info .p-toast-message-icon,
+    &-message.p-toast-message-info .p-toast-icon-close {
+        color: #044868;
+    }
+
+    &-message.p-toast-message-success {
+        background: #C8E6C9;
+        border: solid #439446;
+        border-width: 0 0 0 6px;
+        color: #224A23;
+    }
+
+    &-message.p-toast-message-success .p-toast-message-icon,
+    &-message.p-toast-message-success .p-toast-icon-close {
+        color: #224A23;
+    }
+
+    &-message.p-toast-message-warn {
+        background: #FFECB3;
+        border: solid #D9A300;
+        border-width: 0 0 0 6px;
+        color: #6D5100;
+    }
+
+    &-message.p-toast-message-warn .p-toast-message-icon,
+    &-message.p-toast-message-warn .p-toast-icon-close {
+        color: #6D5100;
+    }
+
+    &-message.p-toast-message-error {
+        background: #FFCDD2;
+        border: solid #E60017;
+        border-width: 0 0 0 6px;
+        color: #73000C;
+
+        .p-toast-message-icon {
+            display: none;
+        }
+    }
+
+    &-message.p-toast-message-error .p-toast-message-icon,
+    &-message.p-toast-message-error .p-toast-icon-close {
+        color: #73000C;
+    }
+}

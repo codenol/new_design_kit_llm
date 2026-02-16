@@ -1,0 +1,14 @@
+.add-new-option-container {
+    display: inline-flex;
+    align-items: center;
+    margin: 4px 0 20px;
+    cursor: pointer;
+
+    .pls-btn {
+        margin-right: 12px;
+        padding: 4px;
+        background: var(--link-color);
+        border-radius: 50%;
+        color: var(--surface-input);
+    }
+}

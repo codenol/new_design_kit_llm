@@ -1,0 +1,22 @@
+/** Маппинг кода статуса на CSS-модификаторы бейджа */
+export const CODE_TO_VARIANT: Record<string, string[]> = {
+  SELECTED: ['status-badge--in-process'],
+  PROCESSING: ['status-badge--in-process', 'status-badge--animate'],
+  DONE: ['status-badge--ok'],
+  corrupt: ['status-badge--critical'],
+  ok: ['status-badge--ok'],
+  OK: ['status-badge--ok'],
+  SUCCESS: ['status-badge--ok'],
+  mumble: ['status-badge--warning'],
+  Warning: ['status-badge--warning'],
+  Critical: ['status-badge--critical'],
+  FAILED: ['status-badge--critical'],
+  Down: ['status-badge--down'],
+  'N/A': ['status-badge--not-available'],
+  InProcess: ['status-badge--in-process', 'status-badge--animate'],
+  New: ['status-badge--new'],
+  NEW: ['status-badge--new'],
+  new: ['status-badge--in-process'],
+  change: ['status-badge--warning'],
+  delete: ['status-badge--critical'],
+};

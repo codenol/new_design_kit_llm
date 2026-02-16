@@ -1,0 +1,9 @@
+.grid-list{
+    grid-template-columns: 1fr;
+    display: grid;
+    gap: 16px;
+
+    @include for-desktop-up{
+        grid-template-columns: 1fr 1fr;
+    }
+}

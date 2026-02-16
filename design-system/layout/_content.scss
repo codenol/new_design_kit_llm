@@ -1,0 +1,26 @@
+@import '../tokens/_variables';
+
+.layout-main-container {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+    transition: margin-left $transitionDuration;
+}
+
+.layout-main {
+    position: relative;
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    min-height: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0 1.5rem 1.5rem 17rem;
+
+    /* Верх первого блока выравниваем с верхом сайдбара (top: 1.5rem) */
+    > *:first-child {
+        margin-top: 1.5rem;
+    }
+}

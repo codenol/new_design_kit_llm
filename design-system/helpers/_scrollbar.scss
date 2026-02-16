@@ -1,0 +1,133 @@
+/* stylelint-disable function-url-quotes */
+/* stylelint-disable custom-property-no-missing-var-function */
+
+@use 'sass:math';
+
+@property --thumb {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: transparent;
+}
+
+@mixin scrollbar(
+    $size: 10px,
+    $margin: 3px,
+    $is-outside: false,
+    $only-y: false,
+    $is-virtual-scroll: false,
+    $thumb-color: #00bec8,
+    $border-radius: 3px
+) {
+    &::-webkit-scrollbar {
+        box-sizing: content-box;
+        width: calc($size);
+        height: calc($size);
+    }
+
+    &::-webkit-scrollbar-corner {
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border: solid 1px transparent;
+        border-radius: $border-radius;
+        box-shadow: inset 0 0 $size $size var(--thumb);
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+        box-shadow: inset 0 0 $size $size $thumb-color;
+    }
+
+    &::-webkit-scrollbar-thumb:vertical {
+        border-inline: solid $margin transparent;
+    }
+
+    &::-webkit-scrollbar-thumb:vertical:hover {
+        border-inline: solid calc($margin - 1px) transparent;
+    }
+
+    &::-webkit-scrollbar-thumb:horizontal {
+        border-block: solid $margin transparent;
+    }
+
+    &::-webkit-scrollbar-thumb:horizontal:hover {
+        border-block: solid calc($margin - 1px) transparent;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    & {
+        @if $only-y {
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        @else {
+            overflow: auto;
+        }
+
+        @if $is-outside {
+            @if $only-y {
+                overflow-x: hidden;
+                overflow-y: auto;
+            }
+
+            @else {
+                overflow: scroll;
+            }
+
+            @if $is-virtual-scroll {
+                margin-bottom: calc($size - ($size * 2));
+            }
+
+            margin-right: calc($size - ($size * 2));
+
+            @-moz-document url-prefix() {
+                overflow: auto;
+                margin-right: 0;
+                margin-bottom: 0;
+            }
+        }
+
+        transition: all 300ms;
+
+        &:hover {
+            --thumb: #00BEC866;
+        }
+    }
+}
+
+.scrollbar-custom {
+    .p-datatable-header,
+    .p-treetable-header {
+        overflow: hidden;
+        border-radius: 4px 4px 0 0;
+    }
+
+    .p-datatable-wrapper,
+    .p-treetable-scrollable-wrapper {
+        @include scrollbar($is-outside: true);
+
+        overflow: auto !important;
+        overflow-y: scroll !important;
+        border-radius: 0 0 4px 4px;
+
+        &:not(:has(> .p-virtualscroller)) {
+            @include scrollbar($is-outside: true);
+        }
+
+        &:has(> .p-virtualscroller) {
+            @include scrollbar($is-outside: true, $is-virtual-scroll: true);
+
+            overflow-y: auto !important;
+        }
+    }
+
+    .p-virtualscroller {
+        @include scrollbar;
+
+        overflow: scroll !important;
+    }
+}

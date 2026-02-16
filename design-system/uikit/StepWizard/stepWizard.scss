@@ -1,0 +1,58 @@
+@import '../styles/mixins';
+
+.step-wizard {
+    display: flex;
+    width: 100%;
+    color: var(--text-primary);
+    gap: var(--spacing-spacer-800);
+
+    .step-wizard__steps {
+        display: flex;
+        flex-direction: column;
+        flex-shrink: 0;
+        border: 1px solid var(--border-default);
+        border-radius: var(--border-radius-xs);
+
+        &_wrapped {
+            .step-wizard__steps-footer {
+                justify-content: center;
+            }
+
+            .step-wizard__steps-wrapp-button svg {
+                transform: rotate(180deg)
+            }
+        }
+    }
+
+    .step-wizard__steps-list {
+        @include scrollbar;
+
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        flex-shrink: 1;
+        min-height: 0;
+        padding: var(--spacing-spacer-800) var(--spacing-spacer-800) 0 var(--spacing-spacer-800);
+        gap: var(--spacing-spacer-600);
+    }
+
+    .step-wizard__steps-footer {
+        display: flex;
+        justify-content: end;
+        padding: var(--spacing-spacer-800);
+    }
+
+    .step-wizard__steps-wrapp-button {
+        padding: 0;
+        gap: 8px;
+    }
+
+    .step-wizard__content {
+        @include scrollbar;
+
+        flex-grow: 1;
+        padding: var(--spacing-spacer-800);
+        border: 1px solid var(--border-default);
+        border-radius: var(--border-radius-xs);
+    }
+}

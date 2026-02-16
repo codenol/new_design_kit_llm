@@ -1,0 +1,8 @@
+// Импортируется только в Визионе
+// TODO: проверить что эти стили не ломают ничего на других проектах
+
+.p-divider-solid.p-divider-horizontal::before {
+    border: 1px;
+    color: var(--surface-border);
+    border-top-style: solid;
+}

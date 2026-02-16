@@ -1,0 +1,44 @@
+.p-chips {
+
+    .p-chips-multiple-container {
+        padding: 0.25rem 0.5rem;
+    }
+
+    &.p-invalid.p-component > .p-inputtext {
+        border-color: var(--danger-color);
+    }
+
+    &-multiple-container:not(.p-disabled):hover {
+        border-color: #64B5F6;
+    }
+
+    &-multiple-container:not(.p-disabled).p-focus {
+        border-color: #64B5F6;
+        box-shadow: 0 0 0 1px #93CBF9;
+        outline: 0 none;
+        outline-offset: 0;
+    }
+
+    &-multiple-container .p-chips-token {
+        margin-right: 0.5rem;
+        padding: 0.25rem 0.5rem;
+        background: rgb(100 181 246 / 16%);
+        border-radius: 3px;
+        color: var(--text-color);
+    }
+
+    &-multiple-container .p-chips-token .p-chips-token-icon {
+        margin-left: 0.5rem;
+    }
+
+    &-multiple-container .p-chips-input-token {
+        padding: 0.25rem 0;
+    }
+
+    &-multiple-container .p-chips-input-token input {
+        margin: 0;
+        padding: 0;
+        color: var(--text-color);
+        font-size: 1rem;
+    }
+}

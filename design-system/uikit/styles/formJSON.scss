@@ -1,0 +1,182 @@
+@import "./formJsonFieldsStyles/dropdown";
+@import "./formJsonFieldsStyles/chips";
+@import "./formJsonFieldsStyles/checkbox";
+@import "./formJsonFieldsStyles/inputtext";
+@import "./formJsonFieldsStyles/radiobutton";
+@import "./formJsonFieldsStyles/selectbutton";
+@import "./formJsonFieldsStyles/multiselect";
+@import "./formJsonFieldsStyles/password";
+@import "./formJsonFieldsStyles/autocomplete";
+@import "./formJsonFieldsStyles/inputfile";
+
+
+.rjsf {
+    .fields-rounded-bg{
+        height: 100%; 
+        padding:  1.5rem;
+        background: var(--surface-card-header);
+        border-radius: 0.25rem;
+    }
+
+    .property-wrapper {
+        width: 100%;
+
+        .field {
+            margin-bottom: 1.2rem;
+        }
+
+        .field-object.bold-title > div > h3 {
+            margin-bottom: 1rem !important;
+            font-weight: 600;
+        }
+
+        
+        & > .field-object{
+            margin-bottom: 1.2rem;
+        }
+    
+        &--last {
+            > .field {
+                margin-bottom: 0;
+            }
+    
+            > .field-object{
+                margin-bottom: 0;
+            }
+        }
+    
+        &--hidden {
+            display: none;
+            appearance: none;
+        }
+
+        & .col-02 {
+            width: calc(50% - .5rem);
+        }
+        
+        & .col-03 {
+            width: calc(33.33% - .75rem);
+        }
+    
+    }
+
+    & > .field-object {
+        margin-bottom: 0;
+    }
+    
+
+}
+
+.p-error {
+    color: var(--danger-color);
+}
+
+.p-warning-label {
+    color: var(--text-warning);
+}
+
+.p-warning.p-component {
+    border-color: var(--border-warning);
+}
+
+.field {
+    &--no-margin{
+        margin: 0 !important;
+
+        .field{
+            margin: 0 !important; 
+        }
+    }
+
+    &--line-bt{
+        padding-bottom: 1.2rem;
+        border-bottom: 1px solid var(--surface-border);
+    }
+
+    &--inline{
+        display: flex;
+        align-items: center;
+
+        label{
+            width: 300px;
+            margin: 0 8px;
+            text-align: end;
+        }
+    }
+}
+
+
+
+.rjsf > .form-group > div > .fields-group > .property-wrapper:last-child > .field {
+    margin-bottom: 0;
+}
+
+.p-steps ul {
+    @include scrollbar;
+    
+    overflow: auto;
+}
+
+.dragndrop-add-btn{
+    margin-top: 1rem
+}
+
+.dragndrop-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.dragndrop-columns {
+    display: flex;
+    flex: 1;
+    gap: 1rem;
+}
+
+.dragndrop-column {
+    display: flex;
+    flex: 1 1 calc((100% / var(--columns-count, 1)) - 2rem);
+    word-break: break-all;
+    align-items: center;
+}
+
+.edit-icon,
+.delete-icon {
+    margin: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+
+    &.visible {
+        display: block;
+    }
+
+    &.hidden {
+        display: none;
+    }
+}
+
+.dragndrop-add-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem 1rem;
+}
+
+.action-body{
+    display: flex;
+    justify-content: end;
+}
+
+.p-disabled-row .p-checkbox {
+    opacity: 0.6;
+    background-color: var(--disabled);
+    color: var(--disabled);
+    border-radius:3px;
+}
+
+.p-disabled {
+    .p-checkbox-box {
+        opacity: 0.6;
+    }
+}

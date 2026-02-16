@@ -1,0 +1,21 @@
+.circle {
+    opacity: 1;
+}
+
+.info-circle-wrapper {
+
+    .p-button-icon-only {
+        &:enabled:focus {
+            box-shadow: none;
+        }
+        
+        &:focus-visible {
+            outline: none;
+        }
+    }
+
+    button {
+        width: fit-content;
+        padding: 0;
+    }
+}

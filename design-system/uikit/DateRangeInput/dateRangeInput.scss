@@ -1,0 +1,45 @@
+.date-range-input {
+    width: 300px;
+
+    input {
+        color: var(--text-secondary);
+    }
+}
+
+.date-range-input__panel-content {
+    display: flex;
+    gap: 1.15rem;
+
+    .date-range-input__panel-inputs {
+        padding: 1.15rem;
+        background: var(--surface-card-header);
+        border-radius: 0.25rem;
+    }
+
+    .p-column-filter-buttonbar > button {
+        flex-basis: 50%;
+    }
+
+    .date-range-input__quick-intervals {
+        overflow: auto;
+        margin: 0;
+        padding: 1.15rem 0;
+        background: var(--surface-card-header);
+        border-radius: 0.25rem;
+        list-style: none;
+        color: var(--text-color);
+
+        .date-range-input__quick-interval {
+            padding: 0.6rem 1.15rem;
+            cursor: pointer;
+
+            &:hover {
+                background-color: var(--background-card-hover);
+            }
+
+            &_active {
+                background-color: var(--background-card-press);
+            }
+        }
+    }
+}

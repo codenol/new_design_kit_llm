@@ -1,0 +1,31 @@
+@import '../styles/mixins';
+
+.p-dialog {
+    @include scrollbar;
+
+    .p-tabview-panels{
+        padding-top: 0 !important;
+    }
+
+    .dialog-sticky-menu{
+        position: absolute;
+        width: calc(100% - 4rem);
+
+        &::after{
+            content: "";
+            position: absolute;
+            top: -1.5rem;
+            left: -1rem;
+            z-index: 0;
+            width: calc(100% + 2rem);
+            height: calc(100% + 2rem);
+            background: linear-gradient(to top,transparent 0,var(--surface-card) 15%);
+        }
+
+        .p-menubar{
+            position: relative;
+            z-index: 1;
+            padding: 0 1rem;
+        }
+    }
+}

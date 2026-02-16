@@ -1,0 +1,83 @@
+.p-inputtext{
+    padding: 0.5rem;
+    background: var(--surface-input);
+    border: 1px solid var(--surface-border);
+    border-radius: 3px;
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+    appearance: none;
+
+    &:enabled:hover {
+        border-color: #64B5F6;
+    }
+
+    &:enabled:focus {
+        border-color: #64B5F6;
+        box-shadow: 0 0 0 1px #93CBF9;
+        outline: 0 none;
+        outline-offset: 0;
+    }
+
+    &:disabled {
+        background: var(--surface-hover);
+        color: var(--text-color-secondary);
+    }
+
+    &.p-invalid.p-component {
+        border-color: var(--danger-color);
+    }
+
+    &.p-inputtext-sm {
+        padding: 0.4375rem;
+        font-size: 0.875rem;
+    }
+
+    &.p-inputtext-lg {
+        padding: 0.625rem;
+        font-size: 1.25rem;
+    }
+}
+
+.p-input-icon{
+
+    &-left > i:first-of-type,
+    &-left > svg:first-of-type,
+    &-left > .p-input-prefix {
+        left: 0.5rem;
+        color: var(--text-color-secondary);
+    }
+
+    &-left > .p-inputtext {
+        padding-left: 2rem;
+    }
+
+    &-left.p-float-label > label {
+        left: 2rem;
+    }
+
+    &-right > i:last-of-type,
+    &-right > svg:last-of-type,
+    &-right > .p-input-suffix {
+        right: 0.5rem;
+        color: var(--text-color-secondary);
+    }
+
+    &-right > .p-inputtext {
+        padding-right: 2rem;
+    }
+
+}
+
+/* stylelint-disable-next-line selector-pseudo-class-no-unknown */
+:input-placeholder {
+    color: var(--text-color-secondary);
+}
+
+:placeholder {
+    color: var(--text-color-secondary);
+}
+
+::placeholder {
+    color: var(--text-color-secondary);
+}

@@ -1,0 +1,105 @@
+.p-paginator {
+    margin-top: auto;
+    padding: 0.5rem 1rem;
+    background: var(--surface-card);
+    border: solid var(--surface-border);
+    border-width: 1px;
+    border-radius: 3px;
+    color: var(--text-color-secondary);
+    
+    .p-dropdown {
+        height: 2.286em;
+        margin-left: 1rem;
+    }
+
+    .p-dropdown .p-dropdown-label {
+        padding-right: 0;
+    }
+
+    .p-link:disabled {
+        color: var(--disabled);
+    }
+
+    button.p-paginator-page.p-paginator-element{
+        font-family: hoves, -apple-system, blinkmacsystemfont, "segoe ui", helvetica, arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        font-size: 1rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 1.2rem;
+    }
+
+    &-first,
+    &-prev,
+    &-next,
+    &-last {
+        min-width: 2.286em;
+        height: 2.286em;
+        margin: 0.143rem;
+        background-color: transparent;
+        border: 0 none;
+        border-radius: 3px;
+        color: var(--text-color);
+        transition: box-shadow 0.2s;
+    }
+
+    &-first:not(.p-disabled):not(.p-highlight):hover,
+    &-prev:not(.p-disabled):not(.p-highlight):hover,
+    &-next:not(.p-disabled):not(.p-highlight):hover,
+    &-last:not(.p-disabled):not(.p-highlight):hover {
+        background: var(--surface-hover);
+        border-color: transparent;
+        color: var(--text-color);
+    }
+
+    &-first {
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+    }
+
+    &-last {
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+    }
+
+    &-page-input {
+        margin-right: 0.5rem;
+        margin-left: 0.5rem;
+    }
+
+    &-page-input .p-inputtext {
+        max-width: 2.286em;
+    }
+
+    &-current {
+        min-width: 2.286em;
+        height: 2.286em;
+        margin: 0.143rem;
+        padding: 0 0.5rem;
+        background-color: transparent;
+        border: 0 none;
+        color: var(--text-color-secondary);
+    }
+
+    &-pages .p-paginator-page {
+        min-width: 2.286em;
+        height: 2.286em;
+        margin: 0.143rem;
+        background-color: transparent;
+        border: 0 none;
+        border-radius: 3px;
+        color: var(--text-color);
+        transition: box-shadow 0.2s;
+    }
+
+    &-pages .p-paginator-page.p-highlight {
+        background: rgb(100 181 246 / 16%);
+        border-color: rgb(100 181 246 / 16%);
+        color: var(--text-color-secondary);;
+    }
+
+    &-pages .p-paginator-page:not(.p-highlight):hover {
+        background: var(--surface-hover);
+        border-color: transparent;
+        color: var(--text-color-secondary);;
+    }
+}

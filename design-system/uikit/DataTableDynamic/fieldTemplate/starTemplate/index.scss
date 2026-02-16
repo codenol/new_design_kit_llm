@@ -1,0 +1,31 @@
+.star {
+    color: var(--surface-border);
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+
+.filledStar {
+    color: var(--link-color);
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+
+.filledStar:hover {
+    color: #49B3FF;
+}
+
+.filledStar:active {
+    color: #49B3FF;
+}
+
+.star:hover {
+    color: var(--link-color)
+}
+
+.star:active {
+    color: var(--link-color)
+}
+
+.star:active:hover {
+    color: #49B3FF
+}

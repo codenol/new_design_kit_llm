@@ -1,0 +1,22 @@
+@mixin aspect-ratio($ratioWidth, $ratioHeight) {
+    aspect-ratio: calc($ratioWidth / $ratioHeight);
+
+    @supports not (aspect-ratio: 1 / 1) {
+        position: relative;
+
+        &::before {
+            content: '';
+            display: block;
+            width: 100%;
+            padding-top: calc($ratioHeight / $ratioWidth * 100%);
+        }
+
+        > * {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+    }
+}

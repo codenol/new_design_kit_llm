@@ -1,0 +1,89 @@
+.p-dialog {
+    min-width: 350px;
+    background: var(--surface-card);
+    border: 1px solid var(--surface-border);
+    border-radius: 3px;
+    box-shadow: 0 11px 15px -7px rgb(0 0 0 / 20%), 0 24px 38px 3px rgb(0 0 0 / 14%), 0 9px 46px 8px rgb(0 0 0 / 12%);
+
+    @include for-desktop-up{
+        min-width: 520px;
+    }
+
+    .p-confirm-dialog .p-confirm-dialog-icon {
+        font-size: 2rem;
+    }
+
+    .p-confirm-dialog .p-confirm-dialog-message {
+        width: 100%;
+        margin: 0;
+        margin-left: 1rem;
+    }
+
+    &-content {
+        @include scrollbar;
+
+        position: relative;
+        display: block !important;
+        padding: 2rem;
+        background: var(--surface-card);
+        color: var(--text-color);
+    }
+
+    &-header {
+        padding: 1rem 1rem 1rem 2rem;
+        background: var(--surface-card);
+        border-bottom: 1px solid var(--surface-border);
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        color: var(--text-color);
+    }
+
+    &-header .p-dialog-title {
+        font-size: 1.3rem;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 1.3rem;
+    }
+
+    &-header .p-dialog-header-icon {
+        width: 2rem;
+        height: 2rem;
+        margin-right: 0.5rem;
+        background: transparent;
+        border: 0 none;
+        border-radius: 50%;
+        color: var(--text-color-secondary);
+        transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+    }
+
+    &-header .p-dialog-header-icon:enabled:hover {
+        background: var(--surface-hover);
+        border-color: transparent;
+        color: var(--text-color);
+    }
+
+    &-header .p-dialog-header-icon:focus {
+        box-shadow: 0 0 0 1px #93CBF9;
+        outline: 0 none;
+        outline-offset: 0;
+    }
+
+    &-header .p-dialog-header-icon:last-child {
+        margin-right: 0;
+    }
+
+    &-footer {
+        padding: 1rem 2rem;
+        background: var(--surface-card);
+        border-top: 1px solid var(--surface-border);
+        border-bottom-left-radius: 3px;
+        border-bottom-right-radius: 3px;
+        color: var(--text-color);
+        text-align: right;
+    }
+
+    &-footer button {
+        width: auto;
+        margin-left: 1rem;
+    }
+}

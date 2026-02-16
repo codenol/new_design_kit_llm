@@ -1,0 +1,76 @@
+.p-accordion {
+    $this: &;
+
+    transition: box-shadow 0.2s;
+
+    &-tab {
+        margin-bottom: 1rem;
+
+        #{$this}-header{
+            &:not(.p-disabled) {
+                &:not(.p-highlight) {
+                    &:hover{
+                        #{$this}-header-link{
+                            background: var(--surface-hover);
+                            border-color: var(--surface-border);
+                            color: var(--text-color);
+                        }
+                    }
+                }
+
+                &.p-invalid {
+                    border-color: var(--danger-color);
+                }
+
+                &.p-highlight {
+                    &:hover #{$this}-header-link{
+                        background: var(--surface-hover);
+                        border-color: var(--surface-border);
+                        color: var(--text-color);
+                    }
+                    #{$this}-header-link{
+                        background: var(--surface-card-header);
+                        border-color: var(--surface-border);
+                        border-bottom-left-radius: 0;
+                        border-bottom-right-radius: 0;
+                        color: var(--text-color);
+                    }
+                }
+                #{$this}-header-link:focus{
+                    box-shadow: 0 0 0 1px var(--focus-ring);
+                    outline: 0 none;
+                    outline-offset: 0;
+                }
+            }
+
+            &-link{
+                flex-direction: row-reverse;
+                padding: 0.8rem;
+                background: var(--surface-card-header);
+                border: 1px solid var(--surface-border);
+                border-radius: var(--border-radius);
+                color: var(--text-color);
+                font-weight: 600;
+
+                #{$this}-toggle-icon {
+                    margin-left: 0.5rem;
+                }
+            }
+
+            &-text{
+                flex-grow: 1;
+                line-height: 1.6;
+            }
+
+        }
+
+        #{$this}-content {
+            padding: 1rem;
+            background: var(--surface-card);
+            border: 1px solid var(--surface-border);
+            border-top: 0;
+            border-radius: 0 0 var(--border-radius) var(--border-radius);
+            color: var(--text-color);
+        }
+    }
+}

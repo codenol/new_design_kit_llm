@@ -1,0 +1,31 @@
+.p-card {
+    background: var(--surface-card);
+    border-radius: 3px;
+    box-shadow: 0 2px 1px -1px rgb(0 0 0 / 20%), 0 1px 1px 0 rgb(0 0 0 / 14%), 0 1px 3px 0 rgb(0 0 0 / 12%);
+    color: var(--text-color);
+
+
+    &-body {
+        padding: 1rem;
+    }
+
+    &-title {
+        margin-bottom: 0.5rem;
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+
+    &-subtitle {
+        margin-bottom: 0.5rem;
+        color: var(--text-color);
+        font-weight: 700;
+    }
+
+    &-content {
+        padding: 1rem 0;
+    }
+
+    &-footer {
+        padding: 1rem 0 0;
+    }
+}

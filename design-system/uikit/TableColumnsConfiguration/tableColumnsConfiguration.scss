@@ -1,0 +1,60 @@
+@import '../styles/mixins';
+
+.table-columns-configuration-overlay-panel {
+    overflow: hidden;
+    margin-top: 0;
+    padding: 16px;
+    background-color: var(--surface-card);
+    border: solid 1px var(--surface-border);
+    border-radius: 4px;
+    box-shadow: 0 1px 4px 0 #0000001A;
+    color: var(--text-color);
+
+    .check-box-row {
+        &:not(:nth-last-child(-n + 1)) {
+            border: solid var(--cool-gray-200);
+            border-width: 0 0 1px;
+        }
+    }
+
+    .table-columns-configuration-overlay-panel-checkboxes-container {
+        @include scrollbar;
+
+        max-height: 450px;
+    }
+
+    .table-columns-configuration-overlay-panel-button-container {
+        display: flex;
+        justify-content: center;
+        padding-top: 12px;
+        border-top: 1px solid var(--cool-gray-200);
+    }
+
+    label {
+        display: flex;
+        align-items: center;
+        height: fit-content;
+        padding: 8px 16px;
+        cursor: pointer;
+        gap: 16px;
+    }
+}
+
+.table-columns-configuration {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    .p-button {
+        padding: 2px;
+        background-color: transparent;
+        border: 0;
+        box-shadow: none;
+        color: var(--text-color-secondary);
+        outline: none;
+
+        &:hover {
+            color: var(--text-color-secondary) !important;
+        }
+    }
+}

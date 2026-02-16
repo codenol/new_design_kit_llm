@@ -1,0 +1,53 @@
+@mixin focused() {
+    box-shadow: var(--focus-ring);
+    outline: 0 none;
+    outline-offset: 0;
+    transition: box-shadow 0.2s;
+}
+
+@mixin focused-inset() {
+    box-shadow: inset var(--focus-ring);
+    outline: 0 none;
+    outline-offset: 0;
+    transition: box-shadow 0.2s;
+}
+
+@mixin box-shadow() {
+    box-shadow: 0 1px 4px rgb(0 0 0 / 10%);
+}
+
+@mixin for-phone-only {
+    @media (max-width: 599px) {
+        @content;
+    }
+}
+
+@mixin for-phone-up {
+    @media (min-width: 599px) {
+        @content;
+    }
+}
+
+@mixin for-tablet-portrait-up {
+    @media (min-width: 600px) {
+        @content;
+    }
+}
+
+@mixin for-tablet-landscape-up {
+    @media (min-width: 900px) {
+        @content;
+    }
+}
+
+@mixin for-desktop-up {
+    @media (min-width: 1200px) {
+        @content;
+    }
+}
+
+@mixin for-big-desktop-up {
+    @media (min-width: 1800px) {
+        @content;
+    }
+}

@@ -1,0 +1,76 @@
+.wizard-step {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: var(--spacing-spacer-300);
+    border-radius: var(--border-radius-m);
+    font-weight: 500;
+    gap: var(--spacing-spacer-600);
+
+    .wizard-step__number {
+        position: relative;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 30px;
+        height: 30px;
+        background-color: var(--status-service-surface);
+        border-radius: 30px;
+        color: var(--status-new-text);
+        line-height: 0;
+    }
+
+    .wizard-step__spinner {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .wizard-step__name {
+        color: var(--text-tertiary);
+    }
+
+    &_processing {
+        background-color: var(--background-card-press);
+
+        .wizard-step__number {
+            background-color: var(--status-new-surface);
+        }
+
+        .wizard-step__name {
+            color: var(--text-primary);
+        }
+    }
+
+    &_done {
+        .wizard-step__number {
+            background-color: var(--status-success-surface);
+        }
+    }
+
+    &_warning {
+        .wizard-step__number {
+            background-color: var(--status-warning--strong-surface);
+        }
+    }
+
+    &_error {
+        .wizard-step__number {
+            background-color: var(--status-critical-surface);
+        }
+    }
+
+    &_clickable {
+        cursor: pointer;
+
+        &:hover {
+            background-color: var(--background-card-hover);
+
+            .wizard-step__name {
+                color: var(--text-secondary);
+            }
+        }
+    }
+}

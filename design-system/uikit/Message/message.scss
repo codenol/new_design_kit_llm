@@ -1,0 +1,160 @@
+.p-inline-message {
+    justify-content: start;
+    width: 100%;
+    padding: 1rem 1rem 1rem calc(1rem - 6px);
+    border: solid;
+    border-width: 0 0 0 6px;
+    border-radius: 6px;
+
+    .p-inline-message-icon svg {
+        width: 1.28rem;
+        height: 1.28rem;
+    }
+
+    .p-button {
+        width: fit-content;
+        height: fit-content;
+        padding: 4px 12px;
+        border: none;
+        border-radius: 6px;
+        color: inherit;
+        line-height: 16px;
+
+        &:hover {
+            color: inherit;
+        }
+
+        &:focus {
+            box-shadow: none;
+        }
+    }
+
+    .p-button.p-button-outlined {
+        padding: calc(4px - 1px) calc(12px - 1px);
+        border: solid 1px;
+    }
+
+    .p-inline-message-close {
+        align-items: start;
+        padding: 0;
+    }
+
+    .p-inline-message-content {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        gap: 8px;
+    }
+
+    .p-inline-message-body {
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 100%;
+        gap: 8px;
+
+        .p-inline-message-text {
+            visibility: visible;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 100%;
+            font-weight: 400;
+            gap: 4px;
+
+            .p-inline-message-text-label {
+                font-weight: 700;
+            }
+        }
+
+    }
+
+    .p-inline-message-btns-block {
+        display: flex;
+        gap: 10px;
+    }
+
+    &-info {
+        background: var(--cornflower-blue-200);
+        border-color: var(--cornflower-blue-600);
+        color: var(--cornflower-blue-800);
+
+        .p-inline-message-accept-btn, .p-inline-message-toggle-btn {
+            background-color: var(--cornflower-blue-400);
+            color: var(--cornflower-blue-800);
+        }
+
+        .p-inline-message-reject-btn {
+            color: var(--cornflower-blue-600);
+        }
+    }
+
+    &-success {
+        background: var(--green-200);
+        border-color: var(--green-750);
+        color: var(--green-850);
+
+        .p-inline-message-accept-btn, .p-inline-message-toggle-btn {
+            background-color: var(--green-300);
+            color: var(--green-850);
+        }
+
+        .p-inline-message-reject-btn {
+            color: var(--green-750);
+        }
+    }
+
+    &-warn {
+        background: var(--orange-200);
+        border-color: var(--orange-500);
+        color: var(--orange-800);
+
+        .p-inline-message-accept-btn, .p-inline-message-toggle-btn {
+            background-color: var(--orange-400);
+            color: var(--orange-850);
+        }
+
+        .p-inline-message-reject-btn {
+            color: var(--orange-700);
+        }
+    }
+
+    &-error {
+        background: var(--red-200);
+        border-color: var(--red-600);
+        color: var(--red-800);
+        
+        .p-inline-message-accept-btn, .p-inline-message-toggle-btn {
+            background-color: var(--red-300);
+            color: var(--red-700);
+        }
+
+        .p-inline-message-reject-btn {
+            color: var(--red-650);
+        }
+    }
+
+    &-close {
+        width: 2rem;
+        height: 2rem;
+        background: transparent;
+        border-radius: 50%;
+        transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+    }
+
+    &-close:hover {
+        background: var(--surface-hover);
+    }
+
+    &-close:focus {
+        box-shadow: 0 0 0 1px #93CBF9;
+        outline: 0 none;
+        outline-offset: 0;
+    }
+
+    &-text {
+        font-size: 1rem;
+        font-weight: 500;
+    }
+}

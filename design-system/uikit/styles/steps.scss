@@ -1,0 +1,71 @@
+.p-steps{
+    
+
+    &-item{
+        &::before {
+            content: " ";
+            position: absolute;
+            top: 2rem;
+            left: 0;
+            display: block;
+            width: 100%;
+            margin-top: -1rem;
+            border-top: 1px solid var(--surface-border);
+        }
+
+        .p-menuitem-link {
+            background: transparent;
+            border-radius: 3px;
+            transition: box-shadow 0.2s;
+        }
+
+        .p-menuitem-link .p-steps-number {
+            z-index: 1;
+            min-width: 2rem;
+            height: 2rem;
+            background: var(--surface-card);
+            border: 1px solid var(--surface-border);
+            border-radius: 50%;
+            color: var(--text-color);
+            font-size: 1.143rem;
+            line-height: 2rem;
+        }
+
+        .p-menuitem-link .p-steps-title {
+            margin-top: 0.5rem;
+            color: var(--text-color-secondary);
+            text-align: center;
+            white-space: normal;
+        }
+
+        .p-menuitem-link:not(.p-disabled):focus {
+            box-shadow: 0 0 0 1px #93CBF9;
+            outline: 0 none;
+            outline-offset: 0;
+        }
+
+        &:hover {
+            .p-steps-number {
+                background-color: var(--back-surface);               
+            }
+        }
+
+        &.p-disabled {
+            .p-steps-number {
+                color: var(--disabled);
+                
+            }
+        }
+
+        &.p-highlight .p-steps-number {
+            background: var(--primary-color);
+            border: none;
+            color: white;
+        }
+
+        &.p-highlight .p-steps-title {
+            color: var(--text-color);
+            font-weight: 600;
+        }
+    } 
+}

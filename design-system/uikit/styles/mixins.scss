@@ -1,0 +1,91 @@
+@use "sass:math";
+
+@property --thumb {
+    syntax: "<color>";
+    inherits: true;
+    initial-value: transparent;
+}
+
+@mixin scrollbar(
+    $size: 10px,
+    $margin: 3px,
+    $is-outside: false,
+    $only-y: false,
+    $thumb-color: #00BEC8,
+    $border-radius: 3px
+) {
+     
+    &::-webkit-scrollbar {
+        box-sizing: content-box;
+        width: calc($size);
+        height: calc($size);
+    }
+
+    &::-webkit-scrollbar-corner {
+        background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        border: solid 1px transparent;
+        border-radius: $border-radius;
+        box-shadow: inset 0 0 $size $size var(--thumb);
+    }
+
+    &::-webkit-scrollbar-thumb:hover{
+        box-shadow: inset 0 0 $size $size $thumb-color;
+    }
+
+    &::-webkit-scrollbar-thumb:vertical {
+        border-inline: solid $margin transparent;
+    }
+
+    &::-webkit-scrollbar-thumb:vertical:hover{
+        border-inline: solid calc($margin - 1px) transparent;
+    }
+    
+    &::-webkit-scrollbar-thumb:horizontal {
+        border-block: solid $margin transparent;
+    }
+
+    &::-webkit-scrollbar-thumb:horizontal:hover{
+        border-block: solid calc($margin - 1px) transparent;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    &{
+        @if $only-y {
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+
+        @else {
+            overflow: auto;
+        }
+
+        @if $is-outside {
+            @if $only-y {
+                overflow-y: auto;
+                overflow-x: hidden;
+            }
+
+            @else {
+                overflow: scroll;
+            }
+
+            margin-right: calc($size - ($size * 2));
+
+            @-moz-document url-prefix() {
+                overflow: auto;
+                margin-right: 0;
+            }
+        }
+        
+
+        &:hover{
+            --thumb: #00BEC866;
+        }
+    }
+}

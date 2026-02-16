@@ -1,0 +1,68 @@
+.dnd-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+}
+
+.dnd-option {
+    display: flex;
+    padding: 8px 16px;
+    background: var(--surface-card-header);
+    border-radius: 4px;
+    box-shadow: 0 1px 4px 0 rgb(0 0 0 / 10%);
+    text-align: center;
+    outline: 1px solid var(--surface-card-header);
+    transition: outline 0.2s;
+    gap: 12px;
+
+    &:hover {
+        outline: 1px solid var(--link-color);
+    }
+}
+
+.dnd-grab-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dnd-grab-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    min-width: 20px;
+    height: 20px;
+
+    svg {
+        cursor: grab;
+    }
+}
+
+
+.dnd-grabbed-option {
+    position: absolute;
+    z-index: 999999;
+    box-shadow: 0 20px 40px 0 rgb(0 0 0 / 20%) !important;
+    color: var(--surface-900);
+    cursor: grabbing !important;
+    outline: 1px solid var(--link-color);
+
+    .dnd-grab-container > .dnd-grab-icon > svg {
+        color: var(--link-color);
+        cursor: grabbing !important;
+    }
+}
+
+.dnd-vacant-space {
+    // TODO: Заменить на нормальный цвет, когда их наконец прикрутим.
+    opacity: 0.2 !important;
+
+    // Такого светло-голубого цвета как в фигме не нашлось, временно наговнюкано.
+    background: var(--link-color) !important;
+
+    * {
+        opacity: 0;
+    }
+}

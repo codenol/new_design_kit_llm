@@ -1,0 +1,21 @@
+.key-value-item {
+    padding: 14px;
+
+    .key-value-item__inner-container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .key-value-item__title-container {
+        display: flex;
+        align-items: center;
+        margin-right: 14px;
+    }
+
+    .key-value-item__value-container {
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        text-align: end;
+    }
+}

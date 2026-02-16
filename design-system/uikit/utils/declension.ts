@@ -1,0 +1,16 @@
+/**
+ * Функция для выбора склонения в зависимости от числа
+ * @param value число
+ * @param words массив с 3 вариантами
+ * @example
+ * words = ['корзину', 'корзины', 'корзин']
+ * @returns элемент из words, подходящий под value
+ */
+export const declension = (value: number, words: string[]) => {
+    value = Math.abs(value) % 100;
+    const num = value % 10;
+    if (value > 10 && value < 20) return words[2];
+    if (num > 1 && num < 5) return words[1];
+    if (num === 1) return words[0];
+    return words[2];
+};

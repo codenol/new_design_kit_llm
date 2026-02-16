@@ -1,0 +1,20 @@
+.ellipsis {
+    display: flex;
+    padding: 4px 5px;
+    color: var(--text-color-secondary);
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.ellipsis:hover {
+    background: rgb(73 179 255 / 30%);
+    border-radius: 6px;
+}
+
+.ellipsis:active {
+    color: var(--link-color)
+}
+
+.ellipsis:disabled {
+    color: #CED4DA;
+}
