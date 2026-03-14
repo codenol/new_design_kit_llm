@@ -1,14 +1,34 @@
-import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
-import classNames from 'classnames';
-import { BreadCrumb } from 'primereact/breadcrumb';
+import React, { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
+import classNames from "classnames";
+import { BreadCrumb } from "primereact/breadcrumb";
 
 const mainNav = [
-  { label: 'Витрина компонентов', to: '/', icon: 'pi pi-th-large' },
-  { label: 'Бакеты', to: '/buckets', icon: 'pi pi-database' },
+  { label: "Витрина компонентов", to: "/", icon: "pi pi-th-large" },
+  { label: "Бакеты", to: "/buckets", icon: "pi pi-database" },
+  {
+    label: "Настройки PostgreSQL",
+    to: "/postgres-setup",
+    icon: "pi pi-database",
+  },
+  {
+    label: "Таблицы PostgreSQL",
+    to: "/postgres-tables",
+    icon: "pi pi-table",
+  },
+  {
+    label: "Сводка по CVE",
+    to: "/cve-summary",
+    icon: "pi pi-shield",
+  },
+  {
+    label: "Health Dashboard",
+    to: "/health-dashboard",
+    icon: "pi pi-heartbeat",
+  },
 ];
 
-const breadcrumbRoot = { icon: 'pi pi-home', url: '/' };
+const breadcrumbRoot = { icon: "pi pi-home", url: "/" };
 
 export interface BreadcrumbItem {
   label: string;
@@ -20,18 +40,19 @@ interface AppLayoutProps {
   children: React.ReactNode;
 }
 
-export const AppLayout: React.FC<AppLayoutProps> = ({ breadcrumbTrail, children }) => {
-  const [isDarkTheme, setIsDarkTheme] = useState(() =>
-    document.body.classList.contains('layout-theme-dark')
-  );
+export const AppLayout: React.FC<AppLayoutProps> = ({
+  breadcrumbTrail,
+  children,
+}) => {
+  const [isDarkTheme, setIsDarkTheme] = useState(() => true);
 
   useEffect(() => {
     if (isDarkTheme) {
-      document.body.classList.remove('layout-theme-light');
-      document.body.classList.add('layout-theme-dark');
+      document.body.classList.remove("layout-theme-light");
+      document.body.classList.add("layout-theme-dark");
     } else {
-      document.body.classList.remove('layout-theme-dark');
-      document.body.classList.add('layout-theme-light');
+      document.body.classList.remove("layout-theme-dark");
+      document.body.classList.add("layout-theme-light");
     }
   }, [isDarkTheme]);
 
@@ -41,7 +62,9 @@ export const AppLayout: React.FC<AppLayoutProps> = ({ breadcrumbTrail, children 
         <div className="layout-menu-container h-full">
           <div className="flex flex-column justify-content-between h-full">
             <NavLink to="/" className="layout-logo">
-              <span style={{ fontWeight: 900, fontSize: '1.5rem' }}>Venom UIKit</span>
+              <span style={{ fontWeight: 900, fontSize: "1.5rem" }}>
+                Venom UIKit
+              </span>
             </NavLink>
             <ul className="layout-menu h-full">
               {mainNav.map((item) => (
@@ -49,7 +72,10 @@ export const AppLayout: React.FC<AppLayoutProps> = ({ breadcrumbTrail, children 
                   <NavLink
                     to={item.to}
                     className={({ isActive }) =>
-                      classNames('router-link', isActive && 'router-link-exact-active')
+                      classNames(
+                        "router-link",
+                        isActive && "router-link-exact-active",
+                      )
                     }
                   >
                     <i className={item.icon} />
@@ -61,7 +87,15 @@ export const AppLayout: React.FC<AppLayoutProps> = ({ breadcrumbTrail, children 
             <div className="layout-menu layout-menu-bottom">
               <ul className="layout-menu">
                 <li>
-                  <NavLink to="/about" className={({ isActive }) => classNames('router-link', isActive && 'router-link-exact-active')}>
+                  <NavLink
+                    to="/about"
+                    className={({ isActive }) =>
+                      classNames(
+                        "router-link",
+                        isActive && "router-link-exact-active",
+                      )
+                    }
+                  >
                     <i className="pi pi-info-circle" />
                     <span className="menuitem-label">О программе</span>
                   </NavLink>
@@ -75,8 +109,8 @@ export const AppLayout: React.FC<AppLayoutProps> = ({ breadcrumbTrail, children 
                       setIsDarkTheme((v) => !v);
                     }}
                   >
-                    <i className={isDarkTheme ? 'pi pi-sun' : 'pi pi-moon'} />
-                    <span>{isDarkTheme ? 'Светлая тема' : 'Тёмная тема'}</span>
+                    <i className={isDarkTheme ? "pi pi-sun" : "pi pi-moon"} />
+                    <span>{isDarkTheme ? "Светлая тема" : "Тёмная тема"}</span>
                   </a>
                 </li>
               </ul>
@@ -92,10 +126,10 @@ export const AppLayout: React.FC<AppLayoutProps> = ({ breadcrumbTrail, children 
               model={breadcrumbTrail}
               home={breadcrumbRoot}
               style={{
-                background: 'var(--surface-card)',
-                padding: '0.6rem',
+                background: "var(--surface-card)",
+                padding: "0.6rem",
                 borderRadius: 3,
-                boxShadow: '0 1px 4px rgba(0,0,0,0.1)',
+                boxShadow: "0 1px 4px rgba(0,0,0,0.1)",
               }}
             />
           </div>

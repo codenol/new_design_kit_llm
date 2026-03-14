@@ -15,55 +15,10 @@
     --logo-color: #002346;
     --surface-hover: #E9ECEF;
     --chevron-color: #6C757D;
+    --scrollbar-thumb-color: #00BEC8;
 }
 
 @media (prefers-color-scheme: dark) {
-    body.layout-theme-light {
-        --layout-submenu: #F7F8F9;
-        --back-surface: #EEF1F5;
-        --surface-border: #DEE2E6;
-        --text-color: #495057;
-        --link-color: #2196F3;
-        --text-color-secondary: #6C757D;
-        --surface-card: #FFFFFF;
-        --surface-card-header: #F8F9FA;
-        --primary-color: #00BEC8;
-        --logo-color: #002346;
-        --green-600: #419544;
-        --green-100: #A7F3D0;
-        --orange-600: #D06900;
-        --yellow-100: #FEF08A;
-        --red-100: #FECACA;
-        --danger-color: #EF4444;
-        --surface-hover: #E9ECEF;
-        --surface-input: #FFFFFF;
-        --surface-0: #FFFFFF;
-        --surface-900: #212121;
-        --disabled: #ADB5BD;
-        --validation-err: #F44336;
-        --danger-color-validation: #FF7878;
-        --warning-color-validation: #F59E0B;
-        --status-warn-text: #854D0E;
-        --status-warn-bg: #FDE68A;
-        --status-danger-text: #991B1B;
-        --status-danger-bg: #FECACA;
-        --status-info-text: #0A5682;
-        --status-info-bg: #BAE1FD;
-        --input-switch-bg: #2196F3;
-        --chevron-color: #DFE1E6;
-        --success-bg: #EFF7E1;
-        --error-bg: #FEE6E6;
-        --radio-button-border-color: #CED4DA;
-        --radio-button-border-color-disabled: #0B7AD1;
-        --radio-button-shadow-color: #A6D5FA;
-        --pak-bg: #BDDEF1;
-        --module-bg: #C9D9F0;
-        --node-bg: #C8EFF6;
-        --service-bg: #E5F5F8;
-        --vm-bg: #E5EAF8;
-        --comm-bg: #CCE1EA;
-    }
-
     body {
         --layout-submenu: #253448;
         --back-surface: #17212F;
@@ -100,14 +55,15 @@
         --success-bg: #9EB778;
         --error-bg: #C49191;
         --radio-button-shadow-color: #A6D5FA;
-        --radio-button-border-color: #CED4DA;
         --radio-button-border-color-disabled: #0B7AD1;
+        --radio-button-border-color: #CED4DA;
         --pak-bg: #9AD3F2;
         --module-bg: #A3C0EB;
         --node-bg: #9DE4F1;
         --service-bg: #C6F6FF;
         --vm-bg: #CBD8FA;
         --comm-bg: #BDD8E3;
+        --scrollbar-thumb-color: transparent;
     }
 }
 
@@ -202,5 +158,6 @@
         --service-bg: #C6F6FF;
         --vm-bg: #CBD8FA;
         --comm-bg: #BDD8E3;
+        --scrollbar-thumb-color: transparent;
     }
 }

@@ -14,3 +14,42 @@
 @import '../design-system/uikit/Message/message';
 @import '../design-system/uikit/DialogTabs/dialogTabs';
 @import '../design-system/uikit/StatusBadge/statusBadge';
+
+// Apple-style scroll for dark theme
+.layout-theme-dark {
+    // Hide all scrollbars in dark theme (Apple-style)
+    ::-webkit-scrollbar {
+        display: none !important;
+    }
+    
+    // Add backdrop blur effect for dark theme
+    body {
+        background: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+    }
+    
+    // Hide scrollbars on all scrollable elements
+    [overflow],
+    [overflow-x],
+    [overflow-y],
+    .p-datatable-wrapper,
+    .p-treetable-scrollable-wrapper,
+    .p-virtualscroller,
+    .p-datatable-header,
+    .p-treetable-header,
+    .p-panel-content,
+    .p-dialog-content,
+    .p-menuitem-content,
+    .p-dropdown-panel,
+    .p-multiselect-panel,
+    .p-calendar-panel,
+    .p-autocomplete-panel,
+    .p-treeselect-panel,
+    .p-selectbutton .p-tabmenu-item-content,
+    .p-togglebutton-content {
+        ::-webkit-scrollbar {
+            display: none !important;
+        }
+    }
+}

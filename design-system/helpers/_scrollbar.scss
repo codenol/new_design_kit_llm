@@ -6,7 +6,7 @@
 @property --thumb {
     syntax: '<color>';
     inherits: true;
-    initial-value: transparent;
+    initial-value: var(--scrollbar-thumb-color, transparent);
 }
 
 @mixin scrollbar(
@@ -96,6 +96,24 @@
         &:hover {
             --thumb: #00BEC866;
         }
+    }
+}
+
+@mixin apple-scroll($is-dark: false) {
+    // Apple-style scroll: hidden scrollbar with backdrop blur effect
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    
+    // Add backdrop blur for dark theme
+    @if $is-dark {
+        background: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
     }
 }
 

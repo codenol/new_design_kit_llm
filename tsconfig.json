@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "uikit": ["design-system/uikit/*"]
+      "uikit/*": ["design-system/uikit/*"],
     },
     "target": "ESNext",
     "useDefineForClassFields": true,
@@ -14,12 +14,13 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "module": "ESNext",
-    "moduleResolution": "Bundler",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "noImplicitAny": false
+    "noImplicitAny": false,
   },
-  "include": ["src", "design-system/uikit"]
+  "include": ["src", "design-system/uikit"],
+  "exclude": ["design-system/uikit/tests", "node_modules"],
 }

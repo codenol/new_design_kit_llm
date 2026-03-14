@@ -25,7 +25,6 @@ import isObject from 'lodash/isObject';
 import set from 'lodash/set';
 import unset from 'lodash/unset';
 import { DataTableDynamic } from '../../../DataTableDynamic';
-
 /** Type used for the state of the `ObjectField` component */
 type ObjectFieldState = {
     /** Flag indicating whether an additional property key was modified */
@@ -42,7 +41,7 @@ type ObjectFieldState = {
 export class TableField<
     T = any,
     S extends StrictRJSFSchema = RJSFSchema,
-    F extends FormContextType = any
+    F extends FormContextType = any,
 > extends Component<FieldProps<T, S, F>, ObjectFieldState> {
     /** Set up the initial state */
     state = {
@@ -314,7 +313,7 @@ export class TableField<
                             name={key}
                             style={{ margin: 0 }}
                             required={this.isRequired(key)}
-                            schema={get(schema, [PROPERTIES_KEY, key], {})}
+                            schema={get(schema, [PROPERTIES_KEY, key], {}) as any}
                             uiSchema={{
                                 ...fieldUiSchema,
                                 'ui:options': {
