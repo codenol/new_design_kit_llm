@@ -9,7 +9,7 @@
 
         &.layout-overlay {
             .layout-main-container {
-                padding-left: 1.5rem;
+                padding-left: var(--layout-shell-padding);
             }
 
             .layout-sidebar {
@@ -34,7 +34,7 @@
             }
 
             .layout-main {
-                padding-left: 6.5rem;
+                padding-left: calc(var(--layout-shell-padding) + 4rem + var(--layout-shell-gap));
             }
         }
     }
@@ -43,7 +43,7 @@
 @include for-phone-only {
     .layout-wrapper {
         .layout-main {
-            padding-left: 1.5rem;
+            padding-left: var(--layout-shell-padding);
         }
 
         .layout-sidebar {

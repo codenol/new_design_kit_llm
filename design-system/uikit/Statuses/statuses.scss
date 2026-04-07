@@ -1,0 +1,59 @@
+.uikit-statuses {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 8px;
+}
+
+.uikit-statuses__item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 24px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0.16px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.16s ease, border-color 0.16s ease, color 0.16s ease;
+}
+
+.uikit-statuses__item:disabled {
+  cursor: default;
+  opacity: 0.68;
+}
+
+.uikit-statuses__item--success {
+  background: var(--status-outline-success-background-default);
+  border-color: var(--status-outline-success-stroke-default);
+  color: var(--status-outline-success-text-default);
+}
+
+.uikit-statuses__item--warning {
+  background: var(--status-outline-warning-background-default);
+  border-color: var(--status-outline-warning-stroke-default);
+  color: var(--status-outline-warning-text-default);
+}
+
+.uikit-statuses__item--critical {
+  background: var(--status-outline-critical-background-default);
+  border-color: var(--status-outline-critical-stroke-default);
+  color: var(--status-outline-critical-text-default);
+}
+
+.uikit-statuses__item--unavailable {
+  background: var(--status-outline-unavailable-background-default);
+  border-color: var(--status-outline-unavailable-stroke-default);
+  color: var(--status-outline-unavailable-text-default);
+}
+
+.uikit-statuses__item:not(:disabled):hover {
+  filter: brightness(0.98);
+}
+
+.uikit-statuses__item.is-selected {
+  box-shadow: 0 0 0 1px color-mix(in srgb, currentcolor 25%, transparent);
+}

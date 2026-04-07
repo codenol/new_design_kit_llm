@@ -1,0 +1,124 @@
+.uikit-hosts-card {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 400px;
+}
+
+.uikit-hosts-card__shell {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  overflow: hidden;
+  border: 1px solid var(--uikit-hosts-border);
+  border-left-width: 4px;
+  border-radius: var(--layout-sidebar-radius);
+  background: var(--surface-card);
+}
+
+.uikit-hosts-card--success {
+  --uikit-hosts-border: var(--content-border-success);
+  --uikit-hosts-header-bg: var(--card-background-success);
+}
+
+.uikit-hosts-card--warning {
+  --uikit-hosts-border: var(--content-border-warning);
+  --uikit-hosts-header-bg: var(--card-background-warning);
+}
+
+.uikit-hosts-card--critical {
+  --uikit-hosts-border: var(--content-border-critical);
+  --uikit-hosts-header-bg: var(--card-background-critical);
+}
+
+.uikit-hosts-card--unavailable {
+  --uikit-hosts-border: var(--content-border-unavailable);
+  --uikit-hosts-header-bg: var(--card-background-unavailable);
+}
+
+.uikit-hosts-card__header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-300);
+  width: 100%;
+  margin: 0;
+  padding: var(--spacing-400);
+  border: none;
+  background: var(--uikit-hosts-header-bg);
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+}
+
+.uikit-hosts-card__header:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.uikit-hosts-card__chevron {
+  flex-shrink: 0;
+  color: var(--content-text-secondary);
+  transition: transform 0.2s ease;
+}
+
+.uikit-hosts-card__chevron.is-open {
+  transform: rotate(90deg);
+}
+
+.uikit-hosts-card__header-main {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-200);
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.uikit-hosts-card__dot {
+  width: var(--spacing-300);
+  height: var(--spacing-300);
+  min-width: var(--spacing-300);
+  min-height: var(--spacing-300);
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--indicator-success-background-default);
+  box-shadow: 0 0 7px 0 color-mix(in srgb, var(--content-border-success) 40%, transparent);
+}
+
+.uikit-hosts-card__dot--warning {
+  background: var(--indicator-warning-background-default);
+  box-shadow: 0 0 7px 0 color-mix(in srgb, var(--content-border-warning) 40%, transparent);
+}
+
+.uikit-hosts-card__dot--critical {
+  background: var(--indicator-critical-background-default);
+  box-shadow: 0 0 7px 0 color-mix(in srgb, var(--content-border-critical) 40%, transparent);
+}
+
+.uikit-hosts-card__dot--unavailable {
+  background: var(--indicator-unavailable-background-default);
+  box-shadow: 0 0 7px 0 color-mix(in srgb, var(--content-border-unavailable) 40%, transparent);
+}
+
+.uikit-hosts-card__host-name {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--content-text-primary);
+  font-family: Roboto, "Segoe UI", "Helvetica Neue", "-apple-system", "Arial", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.16px;
+}
+
+.uikit-hosts-card__body {
+  box-sizing: border-box;
+  padding: var(--spacing-400);
+}
+
+.uikit-hosts-card__body .uikit-indicators-card {
+  max-width: none;
+}

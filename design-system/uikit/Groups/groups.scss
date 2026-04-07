@@ -1,0 +1,43 @@
+.uikit-groups {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-spacer-600);
+  min-height: 20px;
+}
+
+.uikit-groups__label {
+  color: var(--content-text-secondary);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 18px;
+  letter-spacing: 0.28px;
+}
+
+.uikit-groups__dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.uikit-groups__dot {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+}
+
+.uikit-groups__dot--success {
+  background: var(--indicator-success-background-default);
+}
+
+.uikit-groups__dot--warning {
+  background: var(--indicator-warning-background-default);
+}
+
+.uikit-groups__dot--critical {
+  background: var(--indicator-critical-background-default);
+}
+
+.uikit-groups__dot--unavailable {
+  background: var(--indicator-unavailable-background-default);
+}

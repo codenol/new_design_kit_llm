@@ -37,12 +37,12 @@ export interface DrawerProps extends Omit<SidebarProps, 'onHide'> {
     className?: string;
     /**
      * Ширина панели (для left/right) или высота (для top/bottom).
-     * @default '28rem' для left/right
+     * @default var(--layout-drawer-width) (600px в токенах темы) для left/right
      */
     width?: string;
 }
 
-const defaultWidth = '28rem';
+const defaultWidth = 'var(--layout-drawer-width)';
 
 /**
  * Drawer — выдвижная панель с оверлеем и опциональным заголовком.

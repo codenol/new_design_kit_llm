@@ -1,0 +1,60 @@
+.uikit-nodes {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-spacer-600);
+  min-height: 24px;
+}
+
+.uikit-nodes__label {
+  color: var(--content-text-secondary);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 18px;
+  letter-spacing: 0.28px;
+}
+
+.uikit-nodes__counters {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.uikit-nodes__counter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  min-height: 24px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 18px;
+  letter-spacing: 0.28px;
+}
+
+.uikit-nodes__counter--success {
+  background: var(--status-outline-success-background-default);
+  border-color: var(--status-outline-success-stroke-default);
+  color: var(--status-outline-success-text-default);
+}
+
+.uikit-nodes__counter--warning {
+  background: var(--status-outline-warning-background-default);
+  border-color: var(--status-outline-warning-stroke-default);
+  color: var(--status-outline-warning-text-default);
+}
+
+.uikit-nodes__counter--critical {
+  background: var(--status-outline-critical-background-default);
+  border-color: var(--status-outline-critical-stroke-default);
+  color: var(--status-outline-critical-text-default);
+}
+
+.uikit-nodes__counter--unavailable {
+  background: var(--status-outline-unavailable-background-default);
+  border-color: var(--status-outline-unavailable-stroke-default);
+  color: var(--status-outline-unavailable-text-default);
+}

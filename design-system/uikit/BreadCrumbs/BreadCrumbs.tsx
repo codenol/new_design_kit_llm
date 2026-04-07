@@ -55,35 +55,24 @@ export const CustomBreadCrumb: React.FC<CustomBreadCrumbProps> = ({ router, acti
     const breadcrumbsModel: object[] = breadcrumbs.map(({ breadcrumb, match }) => ({
         label: breadcrumb,
         url: match.pathname,
-        template: (item) => tmpLinKBreadCrumb(item),
+        template: (item) => tmpLinkBreadCrumb(item),
     }));
 
     // Стандартные параметры ссылки на главную страницу
     const homeDefault = { icon: <SvgIcon className={'pr-color'} name={'home'} size="1rem" />, url: '/' };
     // Шаблон отдельных элементов хлебной крошки
-    const tmpLinKBreadCrumb = (item: { url: string; label: string }) => (
-        <Link className="p-menuitem-link" to={item.url}>
+    const tmpLinkBreadCrumb = (item: { url: string; label: string }) => (
+        <Link className="p-menuitem-link custom-breadcrumb__link" to={item.url}>
             <span className="p-menuitem-text">{item.label}</span>
         </Link>
     );
 
     return (
-        <div
-            style={{
-                display: 'flex',
-                paddingRight: '.6rem',
-                background: 'var(--surface-card)',
-                width: '100%',
-                alignItems: 'center',
-                borderRadius: 3,
-                boxShadow: '0 1px 4px rgba(0, 0, 0, 0.1)',
-            }}
-        >
+        <div className="custom-breadcrumb">
             <BreadCrumb
-                style={{ padding: '1rem 1rem 1rem 0' }}
                 model={breadcrumbsModel}
                 home={{ ...homeDefault, ...home }}
-                className={'flex-grow-1'}
+                className={'flex-grow-1 custom-breadcrumb__control'}
             />
             {action}
         </div>

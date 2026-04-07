@@ -1,0 +1,292 @@
+# ============================================================
+# Шаблон: БД-кластер PostgreSQL (HA, 3 ноды)
+# Тип ПАК: DB
+#
+# Описание:
+#   Покрывает типовую группу БД на базе PostgreSQL + Patroni:
+#   - VIP-адрес кластера
+#   - 3 ноды (Primary + 2 Replica): аппаратура + HA-сервисы + БД
+#   - Сводные узлы: Postgres / TPS / Соединения
+#
+# Как использовать:
+#   1. Откройте диалог «Настройка шаблонов» (кнопка ⚙ Шаблоны в хедере)
+#   2. Нажмите «Загрузить шаблон» и выберите этот файл
+#   3. Введите название (например: «БД PostgreSQL HA») и тип «DB»
+#   4. В разделе «Назначения» выберите нужные ПАК
+#   5. Нажмите «Применить»
+#
+# Метрики: используются ключи db1_* (из встроенных mock-данных).
+#   Для боевого применения замените метрики на реальные ключи вашей системы.
+# ============================================================
+
+contour:
+  name: "Шаблон БД-кластер PostgreSQL"
+  paks:
+    - id: template-db
+      name: "Шаблон ПАК БД"
+      location: "—"
+      owner: "—"
+      version: "1.0"
+      groups:
+
+        # ── Группа БД 1 ───────────────────────────────────────────────────────
+        - id: grp-db-1
+          name: "Группа БД 1"
+          description: "Кластер PostgreSQL HA — 3 ноды"
+          connections: []
+          attributes:
+            location: "ЦОД-1, стойка A-01"
+            criticality: "Критическая"
+            engine: "PostgreSQL 15 + Patroni"
+          nodes:
+
+            - id: db1-vip-01
+              name: "БД-01-VIP"
+              category: "VIP-адрес"
+              attributes:
+                ip: "10.0.1.100"
+                role: "VIP Master"
+              indicators:
+                - id: vip
+                  name: "VIP-адрес"
+                  sub_indicators:
+                    - name: "VIP Master"
+                      metric: "db1_vip_master"
+                      rules: {critical: "< 1"}
+                    - name: "VIP Replicas"
+                      metric: "db1_vip_replicas"
+                      rules: {warning: "< 2", critical: "< 1"}
+
+            - id: db1-node-01
+              name: "БД-01-НОДА-01 (Primary)"
+              category: "Ноды"
+              attributes:
+                ip: "10.0.1.11"
+                role: "Primary"
+                os: "RHEL 8.6"
+              indicators:
+                - id: hardware
+                  name: "Аппаратура"
+                  sub_indicators:
+                    - name: "ЦПУ"
+                      metric: "db1_n1_cpu"
+                      rules: {warning: "> 80", critical: "> 90"}
+                    - name: "ОЗУ"
+                      metric: "db1_n1_mem"
+                      rules: {warning: "> 90", critical: "> 95"}
+                    - name: "ФС"
+                      metric: "db1_n1_fs"
+                      rules: {warning: "> 80", critical: "> 90"}
+                    - name: "root"
+                      metric: "db1_n1_root"
+                      rules: {warning: "> 80", critical: "> 90"}
+                    - name: "Температура"
+                      metric: "db1_n1_temp"
+                      rules: {warning: "> 70", critical: "> 85"}
+                    - name: "БП"
+                      metric: "db1_n1_psu"
+                      rules: {critical: "< 1"}
+                - id: services
+                  name: "Сервисы HA"
+                  sub_indicators:
+                    - name: "Patroni"
+                      metric: "db1_n1_patroni"
+                      rules: {critical: "< 1"}
+                    - name: "Pacemaker"
+                      metric: "db1_n1_pacemaker"
+                      rules: {critical: "< 1"}
+                    - name: "Corosync"
+                      metric: "db1_n1_corosync"
+                      rules: {critical: "< 1"}
+                    - name: "ETCD"
+                      metric: "db1_n1_etcd"
+                      rules: {critical: "< 1"}
+                    - name: "Vip-manager"
+                      metric: "db1_n1_vipmgr"
+                      rules: {critical: "< 1"}
+                - id: database
+                  name: "База данных"
+                  sub_indicators:
+                    - name: "Postgres"
+                      metric: "db1_n1_postgres"
+                      rules: {critical: "< 1"}
+                    - name: "TPS"
+                      metric: "db1_n1_tps"
+                      rules: {critical: "< 1"}
+                    - name: "Соединения %"
+                      metric: "db1_n1_conn_pct"
+                      rules: {warning: "> 90", critical: "> 99"}
+
+            - id: db1-node-02
+              name: "БД-01-НОДА-02 (Replica 1)"
+              category: "Ноды"
+              attributes:
+                ip: "10.0.1.12"
+                role: "Replica 1"
+                os: "RHEL 8.6"
+              indicators:
+                - id: hardware
+                  name: "Аппаратура"
+                  sub_indicators:
+                    - name: "ЦПУ"
+                      metric: "db1_n2_cpu"
+                      rules: {warning: "> 80", critical: "> 90"}
+                    - name: "ОЗУ"
+                      metric: "db1_n2_mem"
+                      rules: {warning: "> 90", critical: "> 95"}
+                    - name: "ФС"
+                      metric: "db1_n2_fs"
+                      rules: {warning: "> 80", critical: "> 90"}
+                    - name: "root"
+                      metric: "db1_n2_root"
+                      rules: {warning: "> 80", critical: "> 90"}
+                    - name: "Температура"
+                      metric: "db1_n2_temp"
+                      rules: {warning: "> 70", critical: "> 85"}
+                    - name: "БП"
+                      metric: "db1_n2_psu"
+                      rules: {critical: "< 1"}
+                - id: services
+                  name: "Сервисы HA"
+                  sub_indicators:
+                    - name: "Patroni"
+                      metric: "db1_n2_patroni"
+                      rules: {critical: "< 1"}
+                    - name: "Pacemaker"
+                      metric: "db1_n2_pacemaker"
+                      rules: {critical: "< 1"}
+                    - name: "Corosync"
+                      metric: "db1_n2_corosync"
+                      rules: {critical: "< 1"}
+                    - name: "ETCD"
+                      metric: "db1_n2_etcd"
+                      rules: {critical: "< 1"}
+                    - name: "Vip-manager"
+                      metric: "db1_n2_vipmgr"
+                      rules: {critical: "< 1"}
+                - id: database
+                  name: "База данных"
+                  sub_indicators:
+                    - name: "Postgres"
+                      metric: "db1_n2_postgres"
+                      rules: {critical: "< 1"}
+                    - name: "TPS"
+                      metric: "db1_n2_tps"
+                      rules: {critical: "< 1"}
+                    - name: "Соединения %"
+                      metric: "db1_n2_conn_pct"
+                      rules: {warning: "> 90", critical: "> 99"}
+
+            - id: db1-node-03
+              name: "БД-01-НОДА-03 (Replica 2)"
+              category: "Ноды"
+              attributes:
+                ip: "10.0.1.13"
+                role: "Replica 2"
+                os: "RHEL 8.6"
+              indicators:
+                - id: hardware
+                  name: "Аппаратура"
+                  sub_indicators:
+                    - name: "ЦПУ"
+                      metric: "db1_n3_cpu"
+                      rules: {warning: "> 80", critical: "> 90"}
+                    - name: "ОЗУ"
+                      metric: "db1_n3_mem"
+                      rules: {warning: "> 90", critical: "> 95"}
+                    - name: "ФС"
+                      metric: "db1_n3_fs"
+                      rules: {warning: "> 80", critical: "> 90"}
+                    - name: "Температура"
+                      metric: "db1_n3_temp"
+                      rules: {warning: "> 70", critical: "> 85"}
+                    - name: "БП"
+                      metric: "db1_n3_psu"
+                      rules: {critical: "< 1"}
+                - id: services
+                  name: "Сервисы HA"
+                  sub_indicators:
+                    - name: "Patroni"
+                      metric: "db1_n3_patroni"
+                      rules: {critical: "< 1"}
+                    - name: "Pacemaker"
+                      metric: "db1_n3_pacemaker"
+                      rules: {critical: "< 1"}
+                    - name: "Corosync"
+                      metric: "db1_n3_corosync"
+                      rules: {critical: "< 1"}
+                    - name: "ETCD"
+                      metric: "db1_n3_etcd"
+                      rules: {critical: "< 1"}
+                    - name: "Vip-manager"
+                      metric: "db1_n3_vipmgr"
+                      rules: {critical: "< 1"}
+                - id: database
+                  name: "База данных"
+                  sub_indicators:
+                    - name: "Postgres"
+                      metric: "db1_n3_postgres"
+                      rules: {critical: "< 1"}
+                    - name: "TPS"
+                      metric: "db1_n3_tps"
+                      rules: {critical: "< 1"}
+                    - name: "Соединения %"
+                      metric: "db1_n3_conn_pct"
+                      rules: {warning: "> 90", critical: "> 99"}
+
+            - id: db1-postgres
+              name: "Postgres БД (сводный)"
+              category: "Postgres"
+              attributes:
+                узлов: "3"
+              indicators:
+                - id: postgres_status
+                  name: "Postgres"
+                  sub_indicators:
+                    - name: "Нода 01"
+                      metric: "db1_n1_postgres"
+                      rules: {critical: "< 1"}
+                    - name: "Нода 02"
+                      metric: "db1_n2_postgres"
+                      rules: {critical: "< 1"}
+                    - name: "Нода 03"
+                      metric: "db1_n3_postgres"
+                      rules: {critical: "< 1"}
+
+            - id: db1-tps
+              name: "TPS (сводный)"
+              category: "TPS"
+              attributes:
+                узлов: "3"
+              indicators:
+                - id: tps_status
+                  name: "TPS"
+                  sub_indicators:
+                    - name: "Нода 01"
+                      metric: "db1_n1_tps"
+                      rules: {critical: "< 1"}
+                    - name: "Нода 02"
+                      metric: "db1_n2_tps"
+                      rules: {critical: "< 1"}
+                    - name: "Нода 03"
+                      metric: "db1_n3_tps"
+                      rules: {critical: "< 1"}
+
+            - id: db1-conn
+              name: "Соединения (сводный)"
+              category: "Количество соединений"
+              attributes:
+                узлов: "3"
+              indicators:
+                - id: conn_status
+                  name: "Соединения %"
+                  sub_indicators:
+                    - name: "Нода 01"
+                      metric: "db1_n1_conn_pct"
+                      rules: {warning: "> 90", critical: "> 99"}
+                    - name: "Нода 02"
+                      metric: "db1_n2_conn_pct"
+                      rules: {warning: "> 90", critical: "> 99"}
+                    - name: "Нода 03"
+                      metric: "db1_n3_conn_pct"
+                      rules: {warning: "> 90", critical: "> 99"}

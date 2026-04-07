@@ -1,0 +1,184 @@
+.uikit-card-pak {
+  --card-pak-border-color: var(--content-border-success);
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  width: 100%;
+  box-sizing: border-box;
+  gap: 10px;
+  border: 0.5px solid var(--card-pak-border-color);
+  border-left-width: 8px;
+  border-radius: 16px;
+  background: var(--card-background-success);
+  padding: 16px;
+  position: relative;
+}
+
+.uikit-card-pak--expandable.is-expanded {
+  box-shadow: 0 1px 2px rgb(0 0 0 / 6%);
+}
+
+.uikit-card-pak__shell {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.uikit-card-pak__header-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
+  min-width: 0;
+}
+
+.uikit-card-pak__header-row .uikit-card-pak__expand-trigger {
+  flex: 1 1 0;
+  min-width: 0;
+  width: auto;
+}
+
+.uikit-card-pak__expand-trigger {
+  appearance: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: stretch;
+  border-radius: 8px;
+}
+
+.uikit-card-pak__expand-trigger:focus {
+  outline: none;
+}
+
+.uikit-card-pak__expand-trigger:focus-visible {
+  box-shadow: var(--focus-ring);
+}
+
+.uikit-card-pak__statuses-layer {
+  flex: 0 1 auto;
+  z-index: 1;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  box-sizing: border-box;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+  align-self: flex-start;
+}
+
+.uikit-card-pak--warning {
+  --card-pak-border-color: var(--content-border-warning);
+  border-color: var(--content-border-warning);
+  background: var(--card-background-warning);
+}
+
+.uikit-card-pak--critical {
+  --card-pak-border-color: var(--content-border-critical);
+  border-color: var(--content-border-critical);
+  background: var(--card-background-critical);
+}
+
+.uikit-card-pak--unavailable {
+  --card-pak-border-color: var(--content-border-unavailable);
+  border-color: var(--content-border-unavailable);
+  background: var(--card-background-unavailable);
+}
+
+.uikit-card-pak__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
+}
+
+.uikit-card-pak--expandable .uikit-card-pak__top {
+  box-sizing: border-box;
+}
+
+.uikit-card-pak__title {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  min-width: 0;
+  flex: 1 1 auto;
+  white-space: nowrap;
+}
+
+/* Header/H4 — см. design-system/uikit/styles/typography.scss h4 */
+.uikit-card-pak__title-primary {
+  font-family: Roboto, "Segoe UI", "Helvetica Neue", "-apple-system", "Arial", sans-serif;
+  color: var(--content-text-primary);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0.16px;
+  white-space: nowrap;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.uikit-card-pak--expandable .uikit-card-pak__title {
+  flex: 1 1 0;
+}
+
+.uikit-card-pak__groups,
+.uikit-card-pak__nodes {
+  width: 100%;
+}
+
+.uikit-card-pak .uikit-groups__label,
+.uikit-card-pak .uikit-nodes__label {
+  color: var(--content-text-secondary);
+}
+
+.uikit-card-pak .uikit-nodes__counter {
+  width: 24px;
+  min-width: 24px;
+  height: 24px;
+  min-height: 24px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  border-width: 1px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 18px;
+  letter-spacing: 0.28px;
+}
+
+.uikit-card-pak .uikit-statuses {
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  flex-shrink: 0;
+  gap: 8px;
+}
+
+.uikit-card-pak .uikit-statuses__item {
+  min-height: 24px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.16px;
+}
+
+.uikit-card-pak__bottom {
+  width: 100%;
+  border-top: none;
+  padding-top: 10px;
+}

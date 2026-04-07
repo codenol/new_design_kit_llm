@@ -1,0 +1,194 @@
+/*
+ * PrimeReact всегда ренерит иконку перед лейблом в DOM.
+ * Класс p-button-icon-right ставится только при truthy label — без него flex-order не срабатывал, иконка оставалась слева.
+ * Задаём order на всех .p-button-icon: по умолчанию текст слева (order: 1), иконка справа (order: 2).
+ */
+.uikit-buttonchip.p-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  border-radius: var(--buttonchip-radius);
+  gap: var(--buttonchip-gap);
+  box-sizing: border-box;
+  border: none;
+  box-shadow: none;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
+
+  .p-button-label {
+    order: 1;
+  }
+
+  .p-button-icon {
+    order: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+
+    svg {
+      flex-shrink: 0;
+    }
+
+    &:not(:has(svg)) {
+      font-size: 0.625rem;
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--focus-ring, #93cbf9);
+    outline-offset: 2px;
+  }
+}
+
+.uikit-buttonchip--icon-start.p-button {
+  .p-button-label {
+    order: 2;
+  }
+
+  .p-button-icon {
+    order: 1;
+  }
+}
+
+.uikit-buttonchip--size-sm.p-button {
+  padding: var(--buttonchip-padding-sm);
+  min-height: calc(12px + 4px);
+  font-size: var(--buttonchip-font-s-font-size);
+  font-weight: var(--buttonchip-font-s-font-weight);
+  line-height: var(--buttonchip-font-s-line-height);
+  letter-spacing: var(--buttonchip-font-s-letter-spacing);
+
+  .p-button-icon svg {
+    width: var(--buttonchip-icon-sm);
+    height: var(--buttonchip-icon-sm);
+  }
+}
+
+.uikit-buttonchip--size-md.p-button {
+  padding: var(--buttonchip-padding-md);
+  min-height: calc(12px + 8px);
+  font-size: var(--buttonchip-font-s-font-size);
+  font-weight: var(--buttonchip-font-s-font-weight);
+  line-height: var(--buttonchip-font-s-line-height);
+  letter-spacing: var(--buttonchip-font-s-letter-spacing);
+
+  .p-button-icon svg {
+    width: var(--buttonchip-icon-md);
+    height: var(--buttonchip-icon-md);
+  }
+}
+
+.uikit-buttonchip--size-lg.p-button {
+  padding: var(--buttonchip-padding-lg);
+  min-height: calc(16px + 16px);
+  font-size: var(--buttonchip-font-l-font-size);
+  font-weight: var(--buttonchip-font-l-font-weight);
+  line-height: var(--buttonchip-font-l-line-height);
+  letter-spacing: var(--buttonchip-font-l-letter-spacing);
+
+  .p-button-icon svg {
+    width: var(--buttonchip-icon-lg);
+    height: var(--buttonchip-icon-lg);
+  }
+}
+
+$sentiments: accent, danger, warning, success, info, neutral, subtle;
+
+@each $s in $sentiments {
+  .uikit-buttonchip--sentiment-#{$s}.p-button {
+    &:not(.uikit-buttonchip--sentiment-outline) {
+      border: none;
+
+      &:not(.is-muted) {
+        background: var(--buttonchip-#{$s}-bg-default);
+        color: var(--buttonchip-#{$s}-text-default);
+
+        &:hover:not(:disabled):not(.p-disabled) {
+          background: var(--buttonchip-#{$s}-bg-hover);
+          color: var(--buttonchip-#{$s}-text-hover);
+        }
+      }
+
+      &.is-muted {
+        background: var(--buttonchip-#{$s}-bg-inactive);
+        color: var(--buttonchip-#{$s}-text-inactive);
+
+        &:hover:not(:disabled):not(.p-disabled) {
+          background: var(--buttonchip-#{$s}-bg-hover);
+          color: var(--buttonchip-#{$s}-text-hover);
+        }
+      }
+
+      &:disabled,
+      &.p-disabled {
+        background: var(--buttonchip-#{$s}-bg-inactive);
+        color: var(--buttonchip-#{$s}-text-inactive);
+        cursor: not-allowed;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+/* Outline — только large в Figma */
+.uikit-buttonchip--sentiment-outline.uikit-buttonchip--size-lg.p-button {
+  background: var(--buttonchip-outline-bg-default);
+  border: 1px solid var(--buttonchip-outline-border-default);
+  color: var(--buttonchip-outline-text-default);
+
+  &:not(.is-muted) {
+    &:hover:not(:disabled):not(.p-disabled) {
+      background: var(--buttonchip-outline-bg-hover);
+      border-color: var(--buttonchip-outline-border-hover);
+      color: var(--buttonchip-outline-text-hover);
+    }
+  }
+
+  &.is-muted {
+    background: var(--buttonchip-outline-bg-inactive);
+    border-color: var(--buttonchip-outline-border-inactive);
+    color: var(--buttonchip-outline-text-inactive);
+
+    &:hover:not(:disabled):not(.p-disabled) {
+      background: var(--buttonchip-outline-bg-hover);
+      border-color: var(--buttonchip-outline-border-hover);
+      color: var(--buttonchip-outline-text-hover);
+    }
+  }
+
+  &:disabled,
+  &.p-disabled {
+    background: var(--buttonchip-outline-bg-inactive);
+    border-color: var(--buttonchip-outline-border-inactive);
+    color: var(--buttonchip-outline-text-inactive);
+    cursor: not-allowed;
+    opacity: 1;
+  }
+}
+
+.uikit-buttonchip--layout-text-only .p-button-icon {
+  display: none !important;
+}
+
+.uikit-buttonchip--layout-icon-only.p-button {
+  padding: var(--buttonchip-padding-md);
+
+  &.uikit-buttonchip--size-sm {
+    padding: var(--buttonchip-padding-sm);
+  }
+
+  &.uikit-buttonchip--size-lg {
+    padding: var(--buttonchip-padding-lg);
+  }
+
+  .p-button-label:empty {
+    display: none;
+    width: 0;
+    min-width: 0;
+    padding: 0;
+  }
+}

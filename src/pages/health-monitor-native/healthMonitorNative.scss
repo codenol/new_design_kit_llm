@@ -1,0 +1,999 @@
+@import '../../../design-system/helpers';
+
+.hm-monitor-card {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  min-height: 672px;
+  border-radius: 20px;
+  padding: 24px;
+  background: var(--container-background-default);
+  border: 1px solid var(--container-border-default);
+  backdrop-filter: blur(8px);
+}
+
+.hm-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.hm-toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.hm-skala-buttonchip.p-button .hm-skala-buttonchip__icon {
+  color: currentColor;
+}
+
+// Единое поле поиска (тулбар + модалка): см. HmSearchField.tsx
+.hm-search-field {
+  position: relative;
+  flex: 1 1 10rem;
+  min-width: 0;
+}
+
+.hm-search-field--toolbar {
+  flex: 0 0 auto;
+  width: 198px;
+  max-width: 100%;
+}
+
+.hm-search-field__input.p-inputtext {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  padding: calc(var(--spacing-150) + 1px) calc(var(--spacing-500) + var(--spacing-100)) calc(var(--spacing-150) + 1px) var(--spacing-300);
+  border: 1px solid var(--drawer-border-default);
+  border-radius: var(--border-radius-m);
+  background: var(--drawer-bg-secondary);
+  color: var(--drawer-text-primary);
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.hm-search-field__input.p-inputtext::placeholder {
+  color: var(--drawer-text-tertiary);
+  opacity: 1;
+}
+
+.hm-search-field__input.p-inputtext:enabled:focus {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-color: var(--drawer-border-default);
+}
+
+.hm-search-field__icon {
+  position: absolute;
+  right: var(--spacing-200);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  color: var(--drawer-icon-secondary);
+}
+
+.hm-page-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.hm-left {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 0;
+  overflow: auto;
+  padding-right: 4px;
+  width: 100%;
+}
+
+.hm-pak-card-wrap {
+  cursor: pointer;
+  width: 100%;
+}
+
+.hm-pak-card-wrap--dimmed {
+  opacity: 0.42;
+  pointer-events: auto;
+}
+
+.hm-pak-expanded-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+}
+
+.hm-pak-flow-hint {
+  margin: 0;
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--content-text-secondary);
+}
+
+.hm-group-flow {
+  border-radius: 12px;
+  border: 1px solid var(--surface-border);
+  background: var(--back-surface);
+  overflow: hidden;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  max-height: 60vh;
+  max-height: 60dvh;
+}
+
+.hm-group-node-rf {
+  position: relative;
+}
+
+.hm-card-group-canvas.uikit-card-group {
+  width: 370px;
+  max-width: 370px;
+  box-sizing: border-box;
+}
+
+.hm-group-flow .react-flow__renderer {
+  background: var(--back-surface) !important;
+}
+
+.hm-group-flow .react-flow__controls-button {
+  background: var(--surface-card) !important;
+  border-color: var(--surface-border) !important;
+  color: var(--content-text-secondary) !important;
+  fill: var(--content-text-secondary) !important;
+}
+
+.hm-group-flow .react-flow__controls-button:hover {
+  background: var(--surface-hover) !important;
+  color: var(--content-text-primary) !important;
+}
+
+@keyframes hm-status-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.45;
+  }
+}
+
+.hm-status-critical-pulse {
+  animation: hm-status-pulse 2s ease-in-out infinite;
+}
+
+.hm-pak-card {
+  --content-text-primary: var(--text-color);
+  --content-text-secondary: var(--text-color-secondary);
+  padding: 16px;
+  width: 100%;
+}
+
+.hm-pak-card-wrap.is-active .hm-pak-card {
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--primary-color) 50%, transparent);
+}
+
+.hm-pak-card .uikit-card-pak {
+  border-left-width: 8px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+  width: 100%;
+}
+
+.hm-pak-card .uikit-card-pak__title {
+  gap: 24px;
+}
+
+.hm-pak-card .uikit-card-pak__title-primary {
+  font-size: 16px;
+}
+
+.hm-pak-card .uikit-statuses {
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.hm-pak-card .uikit-statuses__item {
+  min-height: 24px;
+  border-radius: 6px;
+  border-width: 1px;
+  padding: 2px 8px;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.16px;
+}
+
+.hm-pak-card .uikit-groups__label {
+  font-size: 14px;
+}
+
+.hm-pak-card .uikit-nodes__label {
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0.28px;
+}
+
+.hm-pak-card .uikit-card-pak__groups {
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  margin-top: 0;
+}
+
+.hm-pak-card .uikit-card-pak__nodes {
+  display: inline-flex;
+  min-height: 24px;
+  margin-top: 0;
+}
+
+.hm-pak-card .uikit-groups__dots,
+.hm-pak-card .uikit-nodes__counters {
+  gap: 4px;
+}
+
+.hm-pak-card .uikit-groups__dot {
+  width: 20px;
+  min-width: 20px;
+  height: 20px;
+  min-height: 20px;
+  border-width: 1px;
+  border-radius: 4px;
+  padding: 0;
+}
+
+.hm-pak-card .uikit-nodes__counter {
+  width: 24px;
+  min-width: 24px;
+  height: 24px;
+  min-height: 24px;
+  border-width: 1px;
+  border-radius: 6px;
+  padding: 2px 8px;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0.28px;
+}
+
+.hm-toolbar > .p-button {
+  min-height: 40px;
+  padding: 8px 20px;
+}
+
+.hm-topology {
+  border: 1px solid var(--surface-border);
+  border-radius: 10px;
+  background: var(--surface-card);
+  padding: 1rem;
+}
+
+.hm-topology-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(12rem, 1fr));
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.hm-topology-row.root {
+  margin-top: 0;
+}
+
+.hm-topology-card {
+  border: 1px solid var(--surface-border);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--surface-card) 85%, var(--primary-color) 15%);
+  padding: 0.75rem;
+  cursor: pointer;
+}
+
+.hm-topology-card.is-selected {
+  border-color: var(--primary-color);
+}
+
+.hm-topology-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.hm-topology-subtitle {
+  margin-top: 0.25rem;
+  color: var(--text-color-secondary);
+  font-size: 0.75rem;
+}
+
+/* —— Дроер детализации группы: фон и текст из токенов темы (см. design-system/uikit/Drawer/drawer.scss) —— */
+
+.hm-detail-root {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: -0.5rem 0 0;
+}
+
+.hm-detail-drawer-body.uikit-drawer-body {
+  max-width: none;
+  width: 100%;
+}
+
+.hm-detail-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.hm-detail-search-wrap {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.hm-detail-search-input.p-inputtext {
+  width: 100%;
+  height: 36px;
+  min-height: 36px;
+  padding: 8px 2.25rem 8px 12px;
+  border-radius: 10px;
+  font-size: 14px;
+  line-height: 20px;
+  border: 1px solid var(--drawer-border-default);
+  background: var(--drawer-bg-secondary);
+  color: var(--drawer-text-primary);
+}
+
+.hm-detail-search-input.p-inputtext::placeholder {
+  color: var(--drawer-text-tertiary);
+  opacity: 1;
+}
+
+.hm-detail-search-icon {
+  color: var(--drawer-icon-secondary);
+  font-size: 0.9rem;
+}
+
+.hm-detail-filter-btn.p-button.p-button-text {
+  flex: 0 0 auto;
+  color: var(--drawer-icon-secondary);
+
+  &:enabled:hover {
+    background: var(--surface-hover);
+    color: var(--drawer-icon-primary);
+  }
+}
+
+.hm-detail-filter-overlay.p-overlaypanel {
+  &::before,
+  &::after {
+    display: none;
+  }
+}
+
+.hm-detail-filter-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 12rem;
+  padding: 0.15rem 0;
+}
+
+.hm-detail-filter-panel__title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--drawer-text-secondary);
+  margin-bottom: 0.25rem;
+}
+
+.hm-detail-filter-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 14px;
+  color: var(--drawer-text-primary);
+  cursor: pointer;
+}
+
+.hm-detail-filter-clear {
+  align-self: flex-start;
+  margin-top: 0.25rem;
+}
+
+.hm-detail-tree {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.hm-detail-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+@mixin hm-detail-tone-row($tone) {
+  border: 1px solid var(--status-outline-#{$tone}-stroke-default);
+  border-left-width: 4px;
+  border-left-color: var(--content-border-#{$tone});
+  background: var(--card-background-#{$tone});
+  /* слой «тени» по макету: смещённый зелёный/тоновый блок снизу справа */
+  box-shadow: 4px 4px 0 0 color-mix(in srgb, var(--content-border-#{$tone}) 30%, transparent);
+}
+
+.hm-detail-cat-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 0.75rem;
+  border-radius: 8px;
+  text-align: left;
+  background: transparent;
+  border-style: solid;
+  cursor: pointer;
+  font: inherit;
+  color: var(--drawer-text-primary);
+}
+
+.hm-detail-cat-row--tone-success {
+  @include hm-detail-tone-row(success);
+}
+
+.hm-detail-cat-row--tone-warning {
+  @include hm-detail-tone-row(warning);
+}
+
+.hm-detail-cat-row--tone-critical {
+  @include hm-detail-tone-row(critical);
+}
+
+.hm-detail-cat-row--tone-unavailable {
+  @include hm-detail-tone-row(unavailable);
+}
+
+.hm-detail-cat-label {
+  flex: 1 1 auto;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 18px;
+  letter-spacing: 0.28px;
+}
+
+.hm-detail-chevron {
+  flex: 0 0 auto;
+  color: var(--drawer-icon-tertiary);
+}
+
+.hm-detail-status-dot {
+  flex: 0 0 auto;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.hm-detail-status-dot--success {
+  background: var(--indicator-success-background-default);
+}
+
+.hm-detail-status-dot--warning {
+  background: var(--indicator-warning-background-default);
+}
+
+.hm-detail-status-dot--critical {
+  background: var(--indicator-critical-background-default);
+}
+
+.hm-detail-status-dot--unavailable {
+  background: var(--indicator-unavailable-background-default);
+}
+
+.hm-detail-cat-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding-left: 0.35rem;
+}
+
+.hm-detail-node-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.hm-detail-node-row {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 0.65rem;
+  border-radius: 8px;
+  text-align: left;
+  background: transparent;
+  border-style: solid;
+  cursor: pointer;
+  font: inherit;
+  color: var(--drawer-text-primary);
+}
+
+.hm-detail-node-row--tone-success {
+  @include hm-detail-tone-row(success);
+}
+
+.hm-detail-node-row--tone-warning {
+  @include hm-detail-tone-row(warning);
+}
+
+.hm-detail-node-row--tone-critical {
+  @include hm-detail-tone-row(critical);
+}
+
+.hm-detail-node-row--tone-unavailable {
+  @include hm-detail-tone-row(unavailable);
+}
+
+.hm-detail-node-name {
+  flex: 1 1 auto;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 18px;
+  word-break: break-word;
+}
+
+.hm-detail-node-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0 0 0.25rem 0.5rem;
+}
+
+/* Один узел = имя совпадает с секцией (VIP и т.п.) — карточки сразу, без дубля строки */
+.hm-detail-node-body--flat {
+  padding-left: 0;
+}
+
+/* Карточка индикаторов — те же токены, что uikit-indicators-card (surface / layout-sidebar-border / content-text) */
+.hm-detail-indicator-card {
+  box-sizing: border-box;
+  border: 1px solid var(--layout-sidebar-border);
+  border-radius: var(--layout-sidebar-radius);
+  background: var(--surface-card);
+  padding: var(--spacing-400);
+}
+
+.hm-detail-indicator-card__title {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--content-text-primary);
+  margin-bottom: 0.45rem;
+}
+
+.hm-detail-metric-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.hm-detail-metric-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.hm-detail-metric-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  align-self: center;
+}
+
+.hm-detail-metric-dot--success {
+  background: var(--indicator-success-background-default);
+}
+
+.hm-detail-metric-dot--warning {
+  background: var(--indicator-warning-background-default);
+}
+
+.hm-detail-metric-dot--critical {
+  background: var(--indicator-critical-background-default);
+}
+
+.hm-detail-metric-dot--unavailable {
+  background: var(--indicator-unavailable-background-default);
+}
+
+.hm-detail-metric-name {
+  color: var(--content-text-primary);
+  font-weight: 700;
+}
+
+.hm-detail-metric-value {
+  color: var(--content-text-primary);
+  font-weight: 700;
+  text-align: right;
+}
+
+.hm-detail-metric-warn-icon {
+  color: var(--status-outline-critical-text-default);
+  flex-shrink: 0;
+}
+
+.hm-yaml-input {
+  box-sizing: border-box;
+  min-height: 12rem;
+  border: 1px solid var(--surface-border);
+  border-radius: var(--border-radius-m);
+  background: var(--surface-card);
+  color: var(--text-color);
+  font-family: ui-monospace, monospace;
+  font-size: 0.75rem;
+  line-height: 1.35;
+  padding: var(--spacing-200);
+}
+
+/* Модалка «Настройка шаблонов» — макет Figma modal new slot (node 5184:30196) */
+.hm-template-dialog.p-dialog {
+  border-radius: var(--layout-sidebar-radius);
+  overflow: hidden;
+  border: 1px solid var(--surface-border);
+  max-height: calc(100vh - 2rem);
+
+  .p-dialog-header {
+    padding: var(--spacing-400) var(--spacing-500);
+    border-bottom: 1px solid var(--surface-border);
+    border-radius: var(--layout-sidebar-radius) var(--layout-sidebar-radius) 0 0;
+  }
+
+  .p-dialog-title {
+    font-size: var(--spacing-500);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--content-text-primary);
+  }
+
+  .p-dialog-content {
+    padding: var(--spacing-500);
+    background: var(--back-surface);
+    color: var(--text-color);
+  }
+
+  .p-dialog-footer {
+    padding: var(--spacing-400) var(--spacing-500);
+    border-top: 1px solid var(--surface-border);
+    border-radius: 0 0 var(--layout-sidebar-radius) var(--layout-sidebar-radius);
+  }
+}
+
+.hm-template-dialog__footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--spacing-200);
+
+  .p-button {
+    margin-left: 0;
+  }
+}
+
+.hm-template-dialog__columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--layout-shell-gap);
+  align-items: start;
+}
+
+@media (width <= 900px) {
+  .hm-template-dialog__columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+.hm-template-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-250);
+  min-width: 0;
+  padding: var(--spacing-400);
+  background: var(--surface-card);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--border-radius-xl);
+}
+
+/* Левая колонка модалки шаблонов — как панель дроера (Figma / токены drawer) */
+.hm-template-card--drawer-style {
+  background: var(--drawer-bg-primary);
+  border-color: var(--drawer-border-default);
+
+  .hm-template-card__error {
+    color: var(--status-outline-critical-text-default);
+  }
+}
+
+.hm-template-card__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-250);
+}
+
+.hm-template-card__filter.p-dropdown {
+  flex: 0 1 11rem;
+  min-width: 9rem;
+  height: 32px;
+  min-height: 32px;
+  background: var(--drawer-bg-secondary);
+  border: 1px solid var(--drawer-border-default);
+  border-radius: var(--border-radius-m);
+
+  .p-dropdown-label {
+    color: var(--drawer-text-primary);
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  .p-dropdown-trigger {
+    color: var(--drawer-icon-secondary);
+  }
+
+  &:not(.p-disabled):hover {
+    border-color: var(--drawer-border-default);
+  }
+}
+
+.hm-template-card__add-btn.p-button {
+  flex-shrink: 0;
+  width: var(--spacing-500);
+  height: var(--spacing-500);
+  min-width: var(--spacing-500);
+  min-height: var(--spacing-500);
+  padding: 0;
+  margin: 0;
+}
+
+.hm-template-card__add {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-200);
+}
+
+.hm-template-card--drawer-style .hm-template-card__add {
+  .p-inputtext,
+  .hm-yaml-input {
+    background: var(--drawer-bg-secondary);
+    border-color: var(--drawer-border-default);
+    color: var(--drawer-text-primary);
+  }
+
+  .p-inputtext::placeholder,
+  .hm-yaml-input::placeholder {
+    color: var(--drawer-text-tertiary);
+  }
+}
+
+.hm-template-card__error {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--status-outline-critical-text-default);
+
+  &--toolbar {
+    margin: 0;
+  }
+}
+
+.hm-template-row__assign.p-button:not(:disabled) {
+  width: var(--spacing-500);
+  height: var(--spacing-500);
+  min-width: var(--spacing-500);
+  padding: 0;
+  background: var(--button-filled-accent-background-default);
+  border: 1px solid var(--button-filled-accent-border-default);
+  color: var(--button-filled-accent-text-default);
+
+  &.hm-template-row__assign--active {
+    box-shadow: 0 0 0 1px var(--palette-brand-400);
+  }
+}
+
+.hm-template-row__assign.p-button:disabled {
+  opacity: 0.45;
+}
+
+.hm-template-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-height: min(28rem, 50vh);
+  overflow: auto;
+  border: 1px solid var(--surface-border);
+  border-radius: var(--border-radius-m);
+  background: var(--surface-card);
+  @include scrollbar;
+}
+
+.hm-template-card--drawer-style .hm-template-list {
+  border-color: var(--drawer-border-default);
+  background: var(--drawer-bg-secondary);
+}
+
+.hm-template-list__empty {
+  padding: var(--spacing-400);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--text-color-secondary);
+}
+
+.hm-template-card--drawer-style .hm-template-list__empty {
+  color: var(--drawer-text-secondary);
+}
+
+.hm-template-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-200);
+  padding: var(--spacing-250);
+  border-bottom: 1px solid var(--surface-border);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.hm-template-row__text {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.hm-template-row__title {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 400;
+  color: var(--content-text-primary);
+}
+
+.hm-template-card--drawer-style .hm-template-row__title {
+  color: var(--drawer-text-primary);
+  font-weight: 500;
+}
+
+.hm-template-row__meta {
+  margin-top: var(--spacing-100);
+  font-size: 0.75rem;
+  line-height: 1.125rem;
+  color: var(--content-text-secondary);
+}
+
+.hm-template-card--drawer-style .hm-template-row__meta {
+  color: var(--drawer-text-secondary);
+}
+
+.hm-template-row__actions {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: var(--spacing-100);
+}
+
+.hm-template-card--drawer-style .hm-template-row {
+  border-bottom-color: var(--drawer-border-default);
+}
+
+.hm-template-row__icon-btn.p-button.p-button-text {
+  color: var(--drawer-icon-secondary);
+
+  &:enabled:hover {
+    background: rgb(255 255 255 / 6%);
+    color: var(--drawer-icon-primary);
+  }
+}
+
+.hm-template-row__icon-btn--danger.p-button.p-button-text {
+  color: var(--status-outline-critical-text-default);
+
+  &:enabled:hover {
+    background: rgb(229 51 52 / 12%);
+    color: var(--status-outline-critical-text-default);
+  }
+}
+
+.hm-pak-assign-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-250);
+  min-width: 0;
+  padding: var(--spacing-400);
+  background: var(--surface-card);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--border-radius-xl);
+  max-height: min(32rem, 55vh);
+  overflow: auto;
+  @include scrollbar;
+}
+
+.hm-pak-assign-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(12rem, 14rem);
+  gap: var(--spacing-300);
+  align-items: center;
+  padding: var(--spacing-250);
+  border-radius: var(--border-radius-m);
+  background: var(--surface-card);
+}
+
+@media (width <= 520px) {
+  .hm-pak-assign-row {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+}
+
+
+.hm-pak-assign-label-block {
+  min-width: 0;
+}
+
+.hm-pak-assign-name-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-200);
+}
+
+.hm-pak-assign-name {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--content-text-primary);
+}
+
+.hm-pak-assign-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-100);
+  max-width: 100%;
+  padding: var(--spacing-100) var(--spacing-200);
+  border-radius: var(--border-radius-m);
+  background: var(--status-outline-success-background-default);
+  border: 1px solid var(--status-outline-success-stroke-default);
+  font-size: 0.8125rem;
+  line-height: 1.2;
+  color: var(--status-outline-success-text-default);
+}
+
+.hm-pak-assign-mark__icon {
+  flex-shrink: 0;
+  font-weight: 700;
+}
+
+.hm-pak-assign-mark__text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 14rem;
+}
+
+.hm-pak-assign-dropdown {
+  width: 100%;
+}

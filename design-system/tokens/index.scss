@@ -1,2 +1,5 @@
 @import './_variables';
+/* Палитра до _theme: семантика дроера ссылается на --white-950, --cool-gray-*, --nile-blue-* */
+@import '../uikit/styles/colors.scss';
 @import './_theme';
+@import './buttonchip';

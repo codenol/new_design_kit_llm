@@ -1,0 +1,156 @@
+# ============================================================
+# Шаблон: СХД-кластер (Storage Hardware Device)
+# Тип ПАК: SHD
+#
+# Описание:
+#   Покрывает типовую группу СХД:
+#   - VIP-адрес кластера
+#   - Два контроллера (Primary / Secondary)
+#   - Дисковая полка
+#
+# Как использовать:
+#   1. Откройте диалог «Настройка шаблонов» (кнопка ⚙ Шаблоны в хедере)
+#   2. Нажмите «Загрузить шаблон» и выберите этот файл
+#   3. Введите название (например: «СХД-кластер») и тип «SHD»
+#   4. В разделе «Назначения» выберите нужные ПАК
+#   5. Нажмите «Применить»
+#
+# Метрики: используются ключи shd1_* (из встроенных mock-данных).
+#   Для боевого применения замените метрики на реальные ключи вашей системы.
+# ============================================================
+
+contour:
+  name: "Шаблон СХД-кластер"
+  paks:
+    - id: template-shd
+      name: "Шаблон ПАК СХД"
+      location: "—"
+      owner: "—"
+      version: "1.0"
+      groups:
+
+        # ── Группа СХД 1 ──────────────────────────────────────────────────────
+        - id: grp-shd-1
+          name: "Группа СХД 1"
+          description: "Кластер СХД — группа 1"
+          connections: []
+          attributes:
+            location: "ЦОД-1, стойка B-01"
+            criticality: "Критическая"
+          nodes:
+
+            - id: shd1-vip-01
+              name: "СХД-01-VIP"
+              category: "VIP-адрес"
+              attributes:
+                ip: "10.0.10.100"
+                role: "VIP Master"
+              indicators:
+                - id: vip
+                  name: "VIP-адрес"
+                  sub_indicators:
+                    - name: "VIP Master"
+                      metric: "shd1_vip_master"
+                      rules:
+                        critical: "< 1"
+                    - name: "VIP Replicas"
+                      metric: "shd1_vip_replicas"
+                      rules:
+                        warning: "< 2"
+                        critical: "< 1"
+
+            - id: shd1-ctrl-01
+              name: "СХД-01-CTRL-01"
+              category: "Узлы"
+              attributes:
+                ip: "10.0.10.11"
+                role: "Primary Controller"
+                model: "NetApp AFF A400"
+              indicators:
+                - id: hardware
+                  name: "Аппаратура"
+                  sub_indicators:
+                    - name: "ЦПУ"
+                      metric: "shd1_c1_cpu"
+                      rules: {warning: "> 80", critical: "> 90"}
+                    - name: "ОЗУ"
+                      metric: "shd1_c1_mem"
+                      rules: {warning: "> 90", critical: "> 95"}
+                    - name: "ФС"
+                      metric: "shd1_c1_fs"
+                      rules: {warning: "> 80", critical: "> 90"}
+                    - name: "Температура"
+                      metric: "shd1_c1_temp"
+                      rules: {warning: "> 60", critical: "> 75"}
+                    - name: "БП"
+                      metric: "shd1_c1_psu"
+                      rules: {critical: "< 1"}
+
+            - id: shd1-ctrl-02
+              name: "СХД-01-CTRL-02"
+              category: "Узлы"
+              attributes:
+                ip: "10.0.10.12"
+                role: "Secondary Controller"
+                model: "NetApp AFF A400"
+              indicators:
+                - id: hardware
+                  name: "Аппаратура"
+                  sub_indicators:
+                    - name: "ЦПУ"
+                      metric: "shd1_c2_cpu"
+                      rules: {warning: "> 80", critical: "> 90"}
+                    - name: "ОЗУ"
+                      metric: "shd1_c2_mem"
+                      rules: {warning: "> 90", critical: "> 95"}
+                    - name: "ФС"
+                      metric: "shd1_c2_fs"
+                      rules: {warning: "> 80", critical: "> 90"}
+                    - name: "Температура"
+                      metric: "shd1_c2_temp"
+                      rules: {warning: "> 60", critical: "> 75"}
+                    - name: "БП"
+                      metric: "shd1_c2_psu"
+                      rules: {critical: "< 1"}
+
+            - id: shd1-shelf-01
+              name: "СХД-01-SHELF-01"
+              category: "Дисковые полки"
+              attributes:
+                model: "DS224C 24x SSD"
+                slots: "24"
+                location: "Стойка B-01, U14"
+              indicators:
+                - id: shelf_hw
+                  name: "Аппаратура полки"
+                  sub_indicators:
+                    - name: "Линки (UP)"
+                      metric: "shd1_sh1_links_pct"
+                      rules: {warning: "< 90", critical: "< 70"}
+                    - name: "Дисков исправно"
+                      metric: "shd1_sh1_disks_ok_pct"
+                      rules: {warning: "< 95", critical: "< 80"}
+                    - name: "Температура"
+                      metric: "shd1_sh1_temp"
+                      rules: {warning: "> 50", critical: "> 65"}
+
+            - id: shd1-shelf-02
+              name: "СХД-01-SHELF-02"
+              category: "Дисковые полки"
+              attributes:
+                model: "DS224C 24x SSD"
+                slots: "24"
+                location: "Стойка B-01, U16"
+              indicators:
+                - id: shelf_hw
+                  name: "Аппаратура полки"
+                  sub_indicators:
+                    - name: "Линки (UP)"
+                      metric: "shd1_sh2_links_pct"
+                      rules: {warning: "< 90", critical: "< 70"}
+                    - name: "Дисков исправно"
+                      metric: "shd1_sh2_disks_ok_pct"
+                      rules: {warning: "< 95", critical: "< 80"}
+                    - name: "Температура"
+                      metric: "shd1_sh2_temp"
+                      rules: {warning: "> 50", critical: "> 65"}

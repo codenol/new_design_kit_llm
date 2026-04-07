@@ -1,0 +1,96 @@
+/**
+ * Buttonchip — семантика из Figma (Light.tokens.json → buttonchip.*), значения только через var()
+ * палитры (uikit/styles/colors.scss) и шага сетки (uikit/styles/dimensions.scss).
+ * См. alias в JSON: bondi-blue/*, red/*, orange/*, green/*, cornflower-blue/*, cool-gray/*.
+ */
+
+:root {
+  /* Типографика: как Button/Button S и Button/Button L в typography.scss; размеры через spacing где возможно */
+  --buttonchip-font-s-font-size: var(--spacing-300);
+  --buttonchip-font-s-line-height: 1.3333333333333333em;
+  --buttonchip-font-s-letter-spacing: 0.02em;
+  --buttonchip-font-s-font-weight: 400;
+
+  /* 14px = 12px + 2px → spacing-300 + spacing-50 */
+  --buttonchip-font-l-font-size: calc(var(--spacing-300) + var(--spacing-50));
+  --buttonchip-font-l-line-height: 1.1428571428571428em;
+  --buttonchip-font-l-letter-spacing: 0.01em;
+  --buttonchip-font-l-font-weight: 500;
+
+  --buttonchip-gap: var(--spacing-200);
+  --buttonchip-padding-sm: var(--spacing-50) var(--spacing-200);
+  --buttonchip-padding-md: var(--spacing-100) var(--spacing-250);
+  --buttonchip-padding-lg: var(--spacing-200) var(--spacing-400);
+  --buttonchip-radius: var(--border-radius-xxl);
+
+  --buttonchip-icon-sm: var(--spacing-300);
+  --buttonchip-icon-md: var(--spacing-300);
+  --buttonchip-icon-lg: var(--spacing-400);
+
+  /* primary (accent) → bondi-blue/* */
+  --buttonchip-accent-bg-default: var(--bondi-blue-300);
+  --buttonchip-accent-text-default: var(--bondi-blue-850);
+  --buttonchip-accent-bg-hover: var(--bondi-blue-200);
+  --buttonchip-accent-text-hover: var(--bondi-blue-850);
+  --buttonchip-accent-bg-inactive: var(--bondi-blue-100);
+  --buttonchip-accent-text-inactive: var(--bondi-blue-400);
+
+  /* danger → red/* */
+  --buttonchip-danger-bg-default: var(--red-300);
+  --buttonchip-danger-text-default: var(--red-850);
+  --buttonchip-danger-bg-hover: var(--red-200);
+  --buttonchip-danger-text-hover: var(--red-850);
+  --buttonchip-danger-bg-inactive: var(--red-100);
+  --buttonchip-danger-text-inactive: var(--red-400);
+
+  /* warning → orange/* */
+  --buttonchip-warning-bg-default: var(--orange-300);
+  --buttonchip-warning-text-default: var(--orange-900);
+  --buttonchip-warning-bg-hover: var(--orange-200);
+  --buttonchip-warning-text-hover: var(--orange-900);
+  --buttonchip-warning-bg-inactive: var(--orange-100);
+  --buttonchip-warning-text-inactive: var(--orange-400);
+
+  /* success → green/* */
+  --buttonchip-success-bg-default: var(--green-300);
+  --buttonchip-success-text-default: var(--green-850);
+  --buttonchip-success-bg-hover: var(--green-200);
+  --buttonchip-success-text-hover: var(--green-850);
+  --buttonchip-success-bg-inactive: var(--green-100);
+  --buttonchip-success-text-inactive: var(--green-400);
+
+  /* info → cornflower-blue/* */
+  --buttonchip-info-bg-default: var(--cornflower-blue-300);
+  --buttonchip-info-text-default: var(--cornflower-blue-850);
+  --buttonchip-info-bg-hover: var(--cornflower-blue-200);
+  --buttonchip-info-text-hover: var(--cornflower-blue-850);
+  --buttonchip-info-bg-inactive: var(--cornflower-blue-100);
+  --buttonchip-info-text-inactive: var(--cornflower-blue-400);
+
+  /* neutral → cool-gray/* */
+  --buttonchip-neutral-bg-default: var(--cool-gray-300);
+  --buttonchip-neutral-text-default: var(--cool-gray-850);
+  --buttonchip-neutral-bg-hover: var(--cool-gray-200);
+  --buttonchip-neutral-text-hover: var(--cool-gray-850);
+  --buttonchip-neutral-bg-inactive: var(--cool-gray-100);
+  --buttonchip-neutral-text-inactive: var(--cool-gray-400);
+
+  /* subtle → cool-gray светлее */
+  --buttonchip-subtle-bg-default: var(--cool-gray-100);
+  --buttonchip-subtle-text-default: var(--cool-gray-850);
+  --buttonchip-subtle-bg-hover: var(--cool-gray-75);
+  --buttonchip-subtle-text-hover: var(--cool-gray-850);
+  --buttonchip-subtle-bg-inactive: var(--cool-gray-50);
+  --buttonchip-subtle-text-inactive: var(--cool-gray-400);
+
+  /* outline (large): bondi-blue/300-t + … — как в Figma buttonchip.outline */
+  --buttonchip-outline-bg-default: color-mix(in srgb, var(--bondi-blue-300) 30%, transparent);
+  --buttonchip-outline-border-default: var(--bondi-blue-550);
+  --buttonchip-outline-text-default: var(--bondi-blue-600);
+  --buttonchip-outline-bg-hover: var(--bondi-blue-300);
+  --buttonchip-outline-border-hover: var(--bondi-blue-550);
+  --buttonchip-outline-text-hover: var(--bondi-blue-700);
+  --buttonchip-outline-bg-inactive: color-mix(in srgb, var(--cool-gray-200) 50%, transparent);
+  --buttonchip-outline-border-inactive: var(--cool-gray-500);
+  --buttonchip-outline-text-inactive: var(--cool-gray-550);
+}

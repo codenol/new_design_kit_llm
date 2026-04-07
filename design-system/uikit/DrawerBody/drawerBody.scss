@@ -1,0 +1,105 @@
+.uikit-drawer-body {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: none;
+  /* Внешние 20px задаёт .p-sidebar-content у Drawer; здесь только раскладка тулбара и карточек */
+  padding: 0;
+}
+
+.uikit-drawer-body__inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-250);
+  width: 100%;
+  min-width: 0;
+}
+
+.uikit-drawer-body__toolbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-250);
+  align-self: stretch;
+}
+
+.uikit-drawer-body__search-wrap {
+  position: relative;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.uikit-drawer-body__search.p-inputtext {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  /* Figma input: 7px 8px 7px 12px */
+  padding: calc(var(--spacing-150) + 1px) var(--spacing-200) calc(var(--spacing-150) + 1px) var(--spacing-300);
+  border: 1px solid var(--drawer-border-default);
+  border-radius: var(--border-radius-m);
+  background: var(--drawer-bg-secondary);
+  color: var(--drawer-text-primary);
+  font-family: Roboto, "Segoe UI", "Helvetica Neue", "-apple-system", "Arial", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0.14px;
+}
+
+.uikit-drawer-body__search.p-inputtext::placeholder {
+  color: var(--drawer-text-tertiary);
+  opacity: 1;
+}
+
+.uikit-drawer-body__search.p-inputtext:enabled:focus {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-color: var(--drawer-border-default);
+}
+
+.uikit-drawer-body__search-icon {
+  position: absolute;
+  right: var(--spacing-200);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  color: var(--drawer-icon-secondary);
+}
+
+.uikit-drawer-body__toolbar-extra {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: var(--spacing-200);
+}
+
+.uikit-drawer-body__expand-btn.p-button.p-button-text {
+  flex-shrink: 0;
+  width: var(--spacing-500);
+  height: var(--spacing-500);
+  min-width: var(--spacing-500);
+  padding: 0;
+  margin: 0;
+  color: var(--drawer-icon-secondary);
+}
+
+.uikit-drawer-body__expand-btn.p-button.p-button-text:hover {
+  background: var(--surface-hover);
+  color: var(--drawer-icon-primary);
+}
+
+.uikit-drawer-body__expand-icon {
+  display: block;
+}
+
+.uikit-drawer-body__cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-300);
+  align-self: stretch;
+  min-width: 0;
+}

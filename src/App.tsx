@@ -1,14 +1,8 @@
 import React, { Component, ErrorInfo, ReactNode } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { ConfirmDialog } from "primereact/confirmdialog";
 import { UIkitProvider } from "../design-system/uikit/UIkitProvider";
-import Showcase from "./pages/Showcase";
-import About from "./pages/About";
-import Buckets from "./pages/Buckets";
-import PostgresSettings from "./pages/PostgresSettings";
-import { PostgresTables } from "./pages/PostgresTables";
-import CVESummary from "./pages/CVESummary";
-import HealthDashboard from "./pages/HealthDashboard";
+import HealthMonitorPage from "./pages/HealthMonitorPage";
 import { Agentation } from "agentation";
 import "./App.scss";
 
@@ -65,13 +59,9 @@ const App: React.FC = () => (
     <UIkitProvider>
       <ConfirmDialog />
       <Routes>
-        <Route path="/" element={<Showcase />} />
-        <Route path="/buckets" element={<Buckets />} />
-        <Route path="/postgres-setup" element={<PostgresSettings />} />
-        <Route path="/postgres-tables" element={<PostgresTables />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/cve-summary" element={<CVESummary />} />
-        <Route path="/health-dashboard" element={<HealthDashboard />} />
+        <Route path="/" element={<Navigate to="/health-monitor" replace />} />
+        <Route path="/health-monitor" element={<HealthMonitorPage />} />
+        <Route path="*" element={<Navigate to="/health-monitor" replace />} />
       </Routes>
       <Agentation />
     </UIkitProvider>

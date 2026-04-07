@@ -1,0 +1,5 @@
+# Dependencies — install with: npm ci
+node_modules/
+
+# Local IDE
+.cursor/
