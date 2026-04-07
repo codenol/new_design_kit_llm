@@ -32,6 +32,15 @@ const categoryFilterOpts = [
 
 const showcaseBreadcrumbTrail = [{ label: "Витрина компонентов" }];
 
+const skalaButtonSeverities = [
+  { label: "Accent", severity: undefined },
+  { label: "Danger", severity: "danger" as const },
+  { label: "Warning", severity: "warning" as const },
+  { label: "Success", severity: "success" as const },
+  { label: "Info", severity: "info" as const },
+  { label: "Secondary", severity: "secondary" as const },
+];
+
 const wizardSteps = [
   {
     name: "Шаг 1",
@@ -119,11 +128,7 @@ const Showcase: React.FC = () => {
             placeholder="Категория"
             className="w-12rem p-inputtext-sm"
           />
-          <Button
-            label="Основная кнопка"
-            className="p-button-pr"
-            size="small"
-          />
+          <Button label="Основная кнопка" size="small" />
           <Button
             label="Вторичная"
             className="p-button-outlined"
@@ -155,6 +160,72 @@ const Showcase: React.FC = () => {
             aria-haspopup
           />
           <Menu model={rowActions} popup ref={actionMenuRef} id="action_menu" />
+        </div>
+
+        <h3 className="text-lg font-semibold mb-2 mt-4">
+          Кнопки Skala (Figma « button», node 980:3408)
+        </h3>
+        <div className="flex flex-column gap-3">
+          <div>
+            <p className="text-sm text-color-secondary mb-2">Filled, large</p>
+            <div className="flex flex-wrap gap-2">
+              {skalaButtonSeverities.map(({ label, severity }) => (
+                <Button key={`fl-${label}`} label={label} severity={severity} />
+              ))}
+            </div>
+          </div>
+          <div>
+            <p className="text-sm text-color-secondary mb-2">Filled, small</p>
+            <div className="flex flex-wrap gap-2">
+              {skalaButtonSeverities.map(({ label, severity }) => (
+                <Button
+                  key={`fs-${label}`}
+                  label={label}
+                  severity={severity}
+                  size="small"
+                />
+              ))}
+            </div>
+          </div>
+          <div>
+            <p className="text-sm text-color-secondary mb-2">Outlined, large</p>
+            <div className="flex flex-wrap gap-2">
+              {skalaButtonSeverities.map(({ label, severity }) => (
+                <Button
+                  key={`ol-${label}`}
+                  label={label}
+                  severity={severity}
+                  outlined
+                />
+              ))}
+            </div>
+          </div>
+          <div>
+            <p className="text-sm text-color-secondary mb-2">Ghost (text), large</p>
+            <div className="flex flex-wrap gap-2">
+              {skalaButtonSeverities.map(({ label, severity }) => (
+                <Button
+                  key={`gl-${label}`}
+                  label={label}
+                  severity={severity}
+                  text
+                />
+              ))}
+            </div>
+          </div>
+          <div>
+            <p className="text-sm text-color-secondary mb-2">Disabled (filled)</p>
+            <div className="flex flex-wrap gap-2">
+              {skalaButtonSeverities.map(({ label, severity }) => (
+                <Button
+                  key={`fd-${label}`}
+                  label={label}
+                  severity={severity}
+                  disabled
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 

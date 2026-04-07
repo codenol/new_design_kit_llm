@@ -3,27 +3,27 @@
 .hm-monitor-card {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: var(--hm-monitor-gap);
   width: 100%;
-  min-height: 672px;
-  border-radius: 20px;
-  padding: 24px;
+  min-height: var(--hm-monitor-min-height);
+  border-radius: var(--hm-monitor-border-radius);
+  padding: var(--hm-monitor-padding);
   background: var(--container-background-default);
   border: 1px solid var(--container-border-default);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(var(--hm-monitor-backdrop-blur));
 }
 
 .hm-toolbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
+  gap: var(--hm-toolbar-gap);
 }
 
 .hm-toolbar-left {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--hm-toolbar-gap);
   min-width: 0;
 }
 
@@ -34,13 +34,13 @@
 // Единое поле поиска (тулбар + модалка): см. HmSearchField.tsx
 .hm-search-field {
   position: relative;
-  flex: 1 1 10rem;
+  flex: 1 1 var(--hm-search-flex-basis);
   min-width: 0;
 }
 
 .hm-search-field--toolbar {
   flex: 0 0 auto;
-  width: 198px;
+  width: var(--hm-search-toolbar-width);
   max-width: 100%;
 }
 
@@ -53,8 +53,8 @@
   border-radius: var(--border-radius-m);
   background: var(--drawer-bg-secondary);
   color: var(--drawer-text-primary);
-  font-size: 14px;
-  line-height: 18px;
+  font-size: var(--hm-search-font-size);
+  line-height: var(--hm-search-line-height);
 }
 
 .hm-search-field__input.p-inputtext::placeholder {
@@ -83,7 +83,7 @@
 .hm-page-grid {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: var(--hm-page-grid-gap);
   flex: 1 1 auto;
   min-height: 0;
 }
@@ -91,10 +91,10 @@
 .hm-left {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: var(--hm-page-grid-gap);
   min-height: 0;
   overflow: auto;
-  padding-right: 4px;
+  padding-right: var(--hm-left-padding-right);
   width: 100%;
 }
 
@@ -111,7 +111,7 @@
 .hm-pak-expanded-stack {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: var(--hm-pak-expanded-stack-gap);
   width: 100%;
   min-width: 0;
   min-height: 0;
@@ -119,21 +119,21 @@
 
 .hm-pak-flow-hint {
   margin: 0;
-  font-size: 13px;
-  line-height: 18px;
+  font-size: var(--hm-flow-hint-font-size);
+  line-height: var(--hm-flow-hint-line-height);
   color: var(--content-text-secondary);
 }
 
 .hm-group-flow {
-  border-radius: 12px;
+  border-radius: var(--hm-group-flow-border-radius);
   border: 1px solid var(--surface-border);
   background: var(--back-surface);
   overflow: hidden;
   width: 100%;
   min-width: 0;
   max-width: 100%;
-  max-height: 60vh;
-  max-height: 60dvh;
+  max-height: var(--hm-group-flow-max-height);
+  max-height: var(--hm-group-flow-max-height-d);
 }
 
 .hm-group-node-rf {
@@ -141,8 +141,8 @@
 }
 
 .hm-card-group-canvas.uikit-card-group {
-  width: 370px;
-  max-width: 370px;
+  width: var(--hm-flow-card-width);
+  max-width: var(--hm-flow-card-width);
   box-sizing: border-box;
 }
 
@@ -180,7 +180,7 @@
 .hm-pak-card {
   --content-text-primary: var(--text-color);
   --content-text-secondary: var(--text-color-secondary);
-  padding: 16px;
+  padding: var(--hm-pak-card-padding);
   width: 100%;
 }
 
@@ -189,47 +189,47 @@
 }
 
 .hm-pak-card .uikit-card-pak {
-  border-left-width: 8px;
-  border-radius: 16px;
+  border-left-width: var(--hm-pak-card-border-left);
+  border-radius: var(--hm-pak-card-inner-radius);
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding: 16px;
+  gap: var(--hm-pak-card-inner-gap);
+  padding: var(--hm-pak-card-padding);
   width: 100%;
 }
 
 .hm-pak-card .uikit-card-pak__title {
-  gap: 24px;
+  gap: var(--hm-pak-card-title-gap);
 }
 
 .hm-pak-card .uikit-card-pak__title-primary {
-  font-size: 16px;
+  font-size: var(--hm-pak-card-title-font-size);
 }
 
 .hm-pak-card .uikit-statuses {
   flex-wrap: nowrap;
   justify-content: flex-end;
-  gap: 8px;
+  gap: var(--hm-pak-statuses-gap);
 }
 
 .hm-pak-card .uikit-statuses__item {
-  min-height: 24px;
-  border-radius: 6px;
+  min-height: var(--hm-pak-status-item-min-height);
+  border-radius: var(--hm-pak-status-item-radius);
   border-width: 1px;
-  padding: 2px 8px;
-  font-size: 16px;
-  line-height: 20px;
-  letter-spacing: 0.16px;
+  padding: var(--hm-pak-status-item-padding-y) var(--hm-pak-status-item-padding-x);
+  font-size: var(--hm-pak-status-item-font-size);
+  line-height: var(--hm-pak-status-item-line-height);
+  letter-spacing: var(--hm-pak-status-item-letter-spacing);
 }
 
 .hm-pak-card .uikit-groups__label {
-  font-size: 14px;
+  font-size: var(--hm-pak-groups-label-font-size);
 }
 
 .hm-pak-card .uikit-nodes__label {
-  font-size: 14px;
-  line-height: 18px;
-  letter-spacing: 0.28px;
+  font-size: var(--hm-pak-nodes-label-font-size);
+  line-height: var(--hm-pak-nodes-label-line-height);
+  letter-spacing: var(--hm-pak-nodes-label-letter-spacing);
 }
 
 .hm-pak-card .uikit-card-pak__groups {
@@ -247,49 +247,49 @@
 
 .hm-pak-card .uikit-groups__dots,
 .hm-pak-card .uikit-nodes__counters {
-  gap: 4px;
+  gap: var(--hm-pak-groups-dots-gap);
 }
 
 .hm-pak-card .uikit-groups__dot {
-  width: 20px;
-  min-width: 20px;
-  height: 20px;
-  min-height: 20px;
+  width: var(--hm-pak-group-dot-size);
+  min-width: var(--hm-pak-group-dot-size);
+  height: var(--hm-pak-group-dot-size);
+  min-height: var(--hm-pak-group-dot-size);
   border-width: 1px;
-  border-radius: 4px;
+  border-radius: var(--hm-pak-group-dot-radius);
   padding: 0;
 }
 
 .hm-pak-card .uikit-nodes__counter {
-  width: 24px;
-  min-width: 24px;
-  height: 24px;
-  min-height: 24px;
+  width: var(--hm-pak-node-counter-size);
+  min-width: var(--hm-pak-node-counter-size);
+  height: var(--hm-pak-node-counter-size);
+  min-height: var(--hm-pak-node-counter-size);
   border-width: 1px;
-  border-radius: 6px;
-  padding: 2px 8px;
-  font-size: 14px;
-  line-height: 18px;
-  letter-spacing: 0.28px;
+  border-radius: var(--hm-pak-node-counter-radius);
+  padding: var(--hm-pak-node-counter-padding-y) var(--hm-pak-node-counter-padding-x);
+  font-size: var(--hm-pak-nodes-label-font-size);
+  line-height: var(--hm-pak-nodes-label-line-height);
+  letter-spacing: var(--hm-pak-nodes-label-letter-spacing);
 }
 
 .hm-toolbar > .p-button {
-  min-height: 40px;
-  padding: 8px 20px;
+  min-height: var(--hm-toolbar-button-min-height);
+  padding: var(--hm-toolbar-button-padding-y) var(--hm-toolbar-button-padding-x);
 }
 
 .hm-topology {
   border: 1px solid var(--surface-border);
-  border-radius: 10px;
+  border-radius: var(--hm-topology-radius);
   background: var(--surface-card);
-  padding: 1rem;
+  padding: var(--hm-topology-padding);
 }
 
 .hm-topology-row {
   display: grid;
-  grid-template-columns: repeat(2, minmax(12rem, 1fr));
-  gap: 0.75rem;
-  margin-top: 0.75rem;
+  grid-template-columns: repeat(2, minmax(var(--hm-topology-grid-min-col), 1fr));
+  gap: var(--hm-topology-row-gap);
+  margin-top: var(--hm-topology-row-gap);
 }
 
 .hm-topology-row.root {
@@ -298,9 +298,9 @@
 
 .hm-topology-card {
   border: 1px solid var(--surface-border);
-  border-radius: 10px;
+  border-radius: var(--hm-topology-radius);
   background: color-mix(in srgb, var(--surface-card) 85%, var(--primary-color) 15%);
-  padding: 0.75rem;
+  padding: var(--hm-topology-card-padding);
   cursor: pointer;
 }
 
@@ -309,14 +309,14 @@
 }
 
 .hm-topology-title {
-  font-size: 0.85rem;
+  font-size: var(--hm-topology-title-font-size);
   font-weight: 700;
 }
 
 .hm-topology-subtitle {
-  margin-top: 0.25rem;
+  margin-top: var(--hm-topology-subtitle-margin-top);
   color: var(--text-color-secondary);
-  font-size: 0.75rem;
+  font-size: var(--hm-topology-subtitle-font-size);
 }
 
 /* —— Дроер детализации группы: фон и текст из токенов темы (см. design-system/uikit/Drawer/drawer.scss) —— */
@@ -325,7 +325,7 @@
   display: flex;
   flex-direction: column;
   gap: 0;
-  margin: -0.5rem 0 0;
+  margin: var(--hm-detail-root-margin-top) 0 0;
 }
 
 .hm-detail-drawer-body.uikit-drawer-body {
@@ -336,7 +336,7 @@
 .hm-detail-toolbar {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--hm-detail-toolbar-gap);
   width: 100%;
 }
 
@@ -347,12 +347,12 @@
 
 .hm-detail-search-input.p-inputtext {
   width: 100%;
-  height: 36px;
-  min-height: 36px;
-  padding: 8px 2.25rem 8px 12px;
-  border-radius: 10px;
-  font-size: 14px;
-  line-height: 20px;
+  height: var(--hm-detail-search-height);
+  min-height: var(--hm-detail-search-height);
+  padding: var(--hm-detail-search-padding-y) var(--hm-detail-search-padding-x-end) var(--hm-detail-search-padding-y) var(--hm-detail-search-padding-x-start);
+  border-radius: var(--hm-detail-search-radius);
+  font-size: var(--hm-detail-search-font-size);
+  line-height: var(--hm-detail-search-line-height);
   border: 1px solid var(--drawer-border-default);
   background: var(--drawer-bg-secondary);
   color: var(--drawer-text-primary);
@@ -365,7 +365,7 @@
 
 .hm-detail-search-icon {
   color: var(--drawer-icon-secondary);
-  font-size: 0.9rem;
+  font-size: var(--hm-detail-search-icon-font-size);
 }
 
 .hm-detail-filter-btn.p-button.p-button-text {
@@ -389,12 +389,12 @@
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
-  min-width: 12rem;
-  padding: 0.15rem 0;
+  min-width: var(--hm-detail-filter-panel-min-width);
+  padding: var(--hm-detail-filter-panel-padding-y) 0;
 }
 
 .hm-detail-filter-panel__title {
-  font-size: 12px;
+  font-size: var(--hm-detail-filter-title-font-size);
   font-weight: 700;
   color: var(--drawer-text-secondary);
   margin-bottom: 0.25rem;
@@ -403,8 +403,8 @@
 .hm-detail-filter-row {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 14px;
+  gap: var(--hm-detail-toolbar-gap);
+  font-size: var(--hm-detail-filter-row-font-size);
   color: var(--drawer-text-primary);
   cursor: pointer;
 }
@@ -417,31 +417,31 @@
 .hm-detail-tree {
   display: flex;
   flex-direction: column;
-  gap: 0.65rem;
+  gap: var(--hm-detail-tree-gap);
 }
 
 .hm-detail-block {
   display: flex;
   flex-direction: column;
-  gap: 0.45rem;
+  gap: var(--hm-detail-block-gap);
 }
 
 @mixin hm-detail-tone-row($tone) {
   border: 1px solid var(--status-outline-#{$tone}-stroke-default);
-  border-left-width: 4px;
+  border-left-width: var(--hm-detail-tone-border-left);
   border-left-color: var(--content-border-#{$tone});
   background: var(--card-background-#{$tone});
   /* слой «тени» по макету: смещённый зелёный/тоновый блок снизу справа */
-  box-shadow: 4px 4px 0 0 color-mix(in srgb, var(--content-border-#{$tone}) 30%, transparent);
+  box-shadow: var(--hm-detail-tone-shadow-offset) var(--hm-detail-tone-shadow-offset) 0 0 color-mix(in srgb, var(--content-border-#{$tone}) 30%, transparent);
 }
 
 .hm-detail-cat-row {
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.65rem 0.75rem;
-  border-radius: 8px;
+  gap: var(--hm-detail-cat-row-gap);
+  padding: var(--hm-detail-cat-row-padding-y) var(--hm-detail-cat-row-padding-x);
+  border-radius: var(--hm-detail-cat-row-radius);
   text-align: left;
   background: transparent;
   border-style: solid;
@@ -468,10 +468,10 @@
 
 .hm-detail-cat-label {
   flex: 1 1 auto;
-  font-size: 14px;
+  font-size: var(--hm-detail-cat-label-font-size);
   font-weight: 700;
-  line-height: 18px;
-  letter-spacing: 0.28px;
+  line-height: var(--hm-detail-cat-label-line-height);
+  letter-spacing: var(--hm-detail-cat-label-letter-spacing);
 }
 
 .hm-detail-chevron {
@@ -481,8 +481,8 @@
 
 .hm-detail-status-dot {
   flex: 0 0 auto;
-  width: 10px;
-  height: 10px;
+  width: var(--hm-detail-status-dot-size);
+  height: var(--hm-detail-status-dot-size);
   border-radius: 50%;
 }
 
@@ -505,23 +505,23 @@
 .hm-detail-cat-body {
   display: flex;
   flex-direction: column;
-  gap: 0.45rem;
-  padding-left: 0.35rem;
+  gap: var(--hm-detail-cat-body-gap);
+  padding-left: var(--hm-detail-cat-body-padding-left);
 }
 
 .hm-detail-node-block {
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: var(--hm-detail-node-block-gap);
 }
 
 .hm-detail-node-row {
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 0.45rem;
-  padding: 0.55rem 0.65rem;
-  border-radius: 8px;
+  gap: var(--hm-detail-node-row-gap);
+  padding: var(--hm-detail-node-row-padding-y) var(--hm-detail-node-row-padding-x);
+  border-radius: var(--hm-detail-node-row-radius);
   text-align: left;
   background: transparent;
   border-style: solid;
@@ -548,17 +548,17 @@
 
 .hm-detail-node-name {
   flex: 1 1 auto;
-  font-size: 13px;
+  font-size: var(--hm-detail-node-name-font-size);
   font-weight: 600;
-  line-height: 18px;
+  line-height: var(--hm-detail-node-name-line-height);
   word-break: break-word;
 }
 
 .hm-detail-node-body {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  padding: 0 0 0.25rem 0.5rem;
+  gap: var(--hm-detail-node-body-gap);
+  padding: 0 0 var(--hm-detail-node-body-padding-bottom) var(--hm-detail-node-body-padding-left);
 }
 
 /* Один узел = имя совпадает с секцией (VIP и т.п.) — карточки сразу, без дубля строки */
@@ -576,10 +576,10 @@
 }
 
 .hm-detail-indicator-card__title {
-  font-size: 12px;
+  font-size: var(--hm-detail-filter-title-font-size);
   font-weight: 700;
   color: var(--content-text-primary);
-  margin-bottom: 0.45rem;
+  margin-bottom: var(--hm-detail-indicator-title-margin-bottom);
 }
 
 .hm-detail-metric-list {
@@ -588,21 +588,21 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: var(--hm-detail-metric-list-gap);
 }
 
 .hm-detail-metric-row {
   display: grid;
   grid-template-columns: auto 1fr auto auto;
   align-items: center;
-  gap: 0.45rem;
-  font-size: 13px;
-  line-height: 18px;
+  gap: var(--hm-detail-metric-row-gap);
+  font-size: var(--hm-detail-metric-font-size);
+  line-height: var(--hm-detail-metric-line-height);
 }
 
 .hm-detail-metric-dot {
-  width: 8px;
-  height: 8px;
+  width: var(--hm-detail-metric-dot-size);
+  height: var(--hm-detail-metric-dot-size);
   border-radius: 50%;
   align-self: center;
 }
@@ -641,7 +641,7 @@
 
 .hm-yaml-input {
   box-sizing: border-box;
-  min-height: 12rem;
+  min-height: var(--hm-yaml-input-min-height);
   border: 1px solid var(--surface-border);
   border-radius: var(--border-radius-m);
   background: var(--surface-card);
@@ -654,10 +654,12 @@
 
 /* Модалка «Настройка шаблонов» — макет Figma modal new slot (node 5184:30196) */
 .hm-template-dialog.p-dialog {
+  width: var(--hm-template-dialog-width);
+  max-width: var(--hm-template-dialog-max-width);
   border-radius: var(--layout-sidebar-radius);
   overflow: hidden;
   border: 1px solid var(--surface-border);
-  max-height: calc(100vh - 2rem);
+  max-height: var(--hm-template-dialog-content-max-height);
 
   .p-dialog-header {
     padding: var(--spacing-400) var(--spacing-500);
@@ -824,7 +826,7 @@
   display: flex;
   flex-direction: column;
   gap: 0;
-  max-height: min(28rem, 50vh);
+  max-height: var(--hm-template-list-max-height);
   overflow: auto;
   border: 1px solid var(--surface-border);
   border-radius: var(--border-radius-m);
@@ -904,7 +906,7 @@
   color: var(--drawer-icon-secondary);
 
   &:enabled:hover {
-    background: rgb(255 255 255 / 6%);
+    background: var(--hm-template-icon-btn-hover-bg);
     color: var(--drawer-icon-primary);
   }
 }
@@ -913,7 +915,7 @@
   color: var(--status-outline-critical-text-default);
 
   &:enabled:hover {
-    background: rgb(229 51 52 / 12%);
+    background: var(--hm-template-icon-btn-danger-hover-bg);
     color: var(--status-outline-critical-text-default);
   }
 }
@@ -927,14 +929,14 @@
   background: var(--surface-card);
   border: 1px solid var(--surface-border);
   border-radius: var(--border-radius-xl);
-  max-height: min(32rem, 55vh);
+  max-height: var(--hm-pak-assign-card-max-height);
   overflow: auto;
   @include scrollbar;
 }
 
 .hm-pak-assign-row {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(12rem, 14rem);
+  grid-template-columns: minmax(0, 1fr) minmax(var(--hm-topology-grid-min-col), var(--hm-topology-grid-max-col));
   gap: var(--spacing-300);
   align-items: center;
   padding: var(--spacing-250);
@@ -991,7 +993,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  max-width: 14rem;
+  max-width: var(--hm-pak-assign-mark-text-max-width);
 }
 
 .hm-pak-assign-dropdown {

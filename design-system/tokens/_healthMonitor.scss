@@ -1,0 +1,148 @@
+/**
+ * Health monitor (модель здоровья) — компонентные токены экрана.
+ * Значения собираются из палитры/сетки (dimensions, _theme); без сырых hex в странице.
+ */
+
+:root {
+  /* —— Оболочка монитора —— */
+  --hm-monitor-gap: var(--spacing-500);
+  --hm-monitor-min-height: calc(42 * var(--spacing-400));
+  --hm-monitor-border-radius: var(--spacing-500);
+  --hm-monitor-padding: var(--spacing-600);
+  --hm-monitor-backdrop-blur: var(--spacing-200);
+
+  /* —— Тулбар —— */
+  --hm-toolbar-gap: var(--spacing-200);
+  --hm-toolbar-button-min-height: calc(var(--spacing-600) + var(--spacing-400));
+  --hm-toolbar-button-padding-y: var(--spacing-200);
+  --hm-toolbar-button-padding-x: var(--spacing-500);
+
+  /* —— Поиск (HmSearchField) —— */
+  --hm-search-flex-basis: 10rem;
+  --hm-search-toolbar-width: 198px;
+  --hm-search-font-size: var(--button-typography-l-font-size);
+  --hm-search-line-height: calc(var(--spacing-300) + var(--spacing-150));
+
+  /* —— Сетка страницы / список ПАК —— */
+  --hm-page-grid-gap: var(--spacing-400);
+  --hm-left-padding-right: var(--spacing-100);
+  --hm-pak-expanded-stack-gap: var(--spacing-300);
+
+  /* —— Подсказка над графом —— */
+  --hm-flow-hint-font-size: calc(var(--spacing-300) + var(--spacing-50));
+  --hm-flow-hint-line-height: calc(var(--spacing-300) + var(--spacing-150));
+  --hm-group-flow-max-height: 60vh;
+  --hm-group-flow-max-height-d: 60dvh;
+
+  /* —— Канвас React Flow —— */
+  --hm-group-flow-border-radius: var(--border-radius-xl);
+  --hm-flow-card-width: 370px;
+  --hm-flow-controls-shadow: 0 var(--spacing-200) var(--spacing-400) color-mix(in srgb, var(--text-color) 8%, transparent);
+
+  /* Рёбра графа (stroke в SVG / React Flow) */
+  --hm-flow-edge-stroke-ok: var(--surface-border);
+  --hm-flow-edge-stroke-warning: var(--status-outline-warning-stroke-default);
+  --hm-flow-edge-stroke-critical: var(--status-outline-critical-stroke-default);
+  --hm-flow-edge-stroke-unknown: var(--status-outline-unavailable-stroke-default);
+
+  /* —— Карточка ПАК (оверрайды CardPak) —— */
+  --hm-pak-card-padding: var(--spacing-400);
+  --hm-pak-card-inner-gap: var(--spacing-250);
+  --hm-pak-card-border-left: var(--spacing-200);
+  --hm-pak-card-inner-radius: var(--spacing-400);
+  --hm-pak-card-title-gap: var(--spacing-600);
+  --hm-pak-card-title-font-size: var(--spacing-400);
+  --hm-pak-statuses-gap: var(--spacing-200);
+  --hm-pak-status-item-min-height: calc(var(--spacing-300) + var(--spacing-300));
+  --hm-pak-status-item-radius: var(--border-radius-s);
+  --hm-pak-status-item-padding-y: var(--spacing-50);
+  --hm-pak-status-item-padding-x: var(--spacing-200);
+  --hm-pak-status-item-font-size: var(--spacing-400);
+  --hm-pak-status-item-line-height: calc(var(--spacing-500) + var(--spacing-100));
+  --hm-pak-status-item-letter-spacing: 0.16px;
+  --hm-pak-groups-label-font-size: var(--button-typography-l-font-size);
+  --hm-pak-nodes-label-font-size: var(--button-typography-l-font-size);
+  --hm-pak-nodes-label-line-height: calc(var(--spacing-300) + var(--spacing-150));
+  --hm-pak-nodes-label-letter-spacing: 0.28px;
+  --hm-pak-groups-dots-gap: var(--spacing-100);
+  --hm-pak-group-dot-size: calc(var(--spacing-500) + var(--spacing-200));
+  --hm-pak-group-dot-radius: var(--border-radius-xs);
+  --hm-pak-node-counter-size: calc(var(--spacing-500) + var(--spacing-200));
+  --hm-pak-node-counter-radius: var(--border-radius-s);
+  --hm-pak-node-counter-padding-y: var(--spacing-50);
+  --hm-pak-node-counter-padding-x: var(--spacing-200);
+
+  /* —— Дроер деталей (доп. к DrawerBody) —— */
+  --hm-detail-root-margin-top: calc(-1 * var(--spacing-250));
+  --hm-detail-toolbar-gap: var(--spacing-200);
+  --hm-detail-search-height: calc(var(--spacing-500) + var(--spacing-100));
+  --hm-detail-search-padding-x-end: calc(var(--spacing-300) + var(--spacing-50));
+  --hm-detail-search-padding-x-start: var(--spacing-300);
+  --hm-detail-search-padding-y: var(--spacing-200);
+  --hm-detail-search-radius: var(--border-radius-l);
+  --hm-detail-search-font-size: var(--button-typography-l-font-size);
+  --hm-detail-search-line-height: calc(var(--spacing-500) + var(--spacing-100));
+  --hm-detail-search-icon-font-size: 0.9rem;
+  --hm-detail-filter-panel-min-width: 12rem;
+  --hm-detail-filter-panel-padding-y: 0.15rem;
+  --hm-detail-filter-title-font-size: var(--button-typography-s-font-size);
+  --hm-detail-filter-row-font-size: var(--button-typography-l-font-size);
+  --hm-detail-tree-gap: 0.65rem;
+  --hm-detail-block-gap: 0.45rem;
+  --hm-detail-tone-border-left: var(--spacing-100);
+  --hm-detail-tone-shadow-offset: var(--spacing-100);
+  --hm-detail-cat-row-gap: var(--spacing-200);
+  --hm-detail-cat-row-padding-y: 0.65rem;
+  --hm-detail-cat-row-padding-x: 0.75rem;
+  --hm-detail-cat-row-radius: var(--border-radius-m);
+  --hm-detail-cat-label-font-size: var(--button-typography-l-font-size);
+  --hm-detail-cat-label-line-height: calc(var(--spacing-300) + var(--spacing-150));
+  --hm-detail-cat-label-letter-spacing: 0.28px;
+  --hm-detail-status-dot-size: var(--spacing-250);
+  --hm-detail-cat-body-gap: 0.45rem;
+  --hm-detail-cat-body-padding-left: 0.35rem;
+  --hm-detail-node-block-gap: 0.35rem;
+  --hm-detail-node-row-gap: 0.45rem;
+  --hm-detail-node-row-padding-y: 0.55rem;
+  --hm-detail-node-row-padding-x: 0.65rem;
+  --hm-detail-node-row-radius: var(--border-radius-m);
+  --hm-detail-node-name-font-size: calc(var(--spacing-300) + var(--spacing-50));
+  --hm-detail-node-name-line-height: calc(var(--spacing-300) + var(--spacing-150));
+  --hm-detail-node-body-gap: var(--spacing-200);
+  --hm-detail-node-body-padding-bottom: 0.25rem;
+  --hm-detail-node-body-padding-left: var(--spacing-200);
+  --hm-detail-indicator-title-margin-bottom: 0.45rem;
+  --hm-detail-metric-list-gap: 0.35rem;
+  --hm-detail-metric-row-gap: 0.45rem;
+  --hm-detail-metric-font-size: calc(var(--spacing-300) + var(--spacing-50));
+  --hm-detail-metric-line-height: calc(var(--spacing-300) + var(--spacing-150));
+  --hm-detail-metric-dot-size: var(--spacing-200);
+
+  /* —— Модалка шаблонов —— */
+  --hm-template-dialog-max-width: min(960px, 95vw);
+  --hm-template-dialog-width: 960px;
+  --hm-template-dialog-content-max-height: calc(100vh - var(--spacing-600));
+
+  /* —— Список шаблонов: ховер иконок —— */
+  --hm-template-icon-btn-hover-bg: color-mix(in srgb, var(--surface-overlay) 6%, transparent);
+  --hm-template-icon-btn-danger-hover-bg: color-mix(
+    in srgb,
+    var(--status-outline-critical-stroke-default) 12%,
+    transparent
+  );
+
+  /* —— Прочее —— */
+  --hm-yaml-input-min-height: calc(12 * var(--spacing-400));
+  --hm-template-list-max-height: min(28rem, 50vh);
+  --hm-pak-assign-card-max-height: min(32rem, 55vh);
+  --hm-pak-assign-mark-text-max-width: 14rem;
+  --hm-topology-grid-min-col: 12rem;
+  --hm-topology-grid-max-col: 14rem;
+  --hm-topology-padding: var(--spacing-400);
+  --hm-topology-radius: var(--border-radius-l);
+  --hm-topology-row-gap: 0.75rem;
+  --hm-topology-card-padding: 0.75rem;
+  --hm-topology-title-font-size: 0.85rem;
+  --hm-topology-subtitle-font-size: 0.75rem;
+  --hm-topology-subtitle-margin-top: 0.25rem;
+}

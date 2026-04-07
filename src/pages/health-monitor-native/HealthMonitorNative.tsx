@@ -2,14 +2,13 @@ import React, { useState } from "react";
 import { Check, X } from "lucide-react";
 import { Button } from "primereact/button";
 import { AppLayout } from "../../layout/AppLayout";
-import { CardPak, CardPakTone, StatusesItem } from "uikit";
+import { CardPak, StatusesItem } from "uikit";
 import { Drawer } from "uikit/Drawer";
 import { ButtonChip } from "uikit/ButtonChip";
 import { useToast } from "uikit/hook/useToast";
 import { TemplateSettingsDialog } from "./TemplateSettingsDialog";
 import { HmSearchField } from "./HmSearchField";
 import { HealthStatus, GroupHealth, NodeHealth, PAKHealth } from "./model/types";
-import { parseConfig } from "./model/yamlParser";
 import {
   loadAssignments,
   loadTemplates,
@@ -19,12 +18,16 @@ import {
 import { DISPLAY_GROUP_COUNT } from "./model/mockPakCards";
 import { useMockPakList } from "./model/useMockPakList";
 import { worstStatus } from "./model/healthRules";
+import { parseConfig } from "./model/yamlParser";
+import { healthStatusToCardPakTone, healthStatusToUiTone } from "./model/statusTone";
 import { GroupFlow } from "./components/GroupFlow";
 import { GroupDetailDrawerContent } from "./components/GroupDetailDrawerContent";
 import "./healthMonitorNative.scss";
-import configYaml from "../../../health-monitor/src/data/config.yaml?raw";
+import bundledConfigYaml from "./data/config.yaml?raw";
 
-const baseConfig = parseConfig(configYaml);
+/** Проверка вложенного YAML при загрузке модуля; данные экрана пока из моков. */
+parseConfig(bundledConfigYaml);
+
 const BREADCRUMB = [{ label: "Мониторинг здоровья" }];
 
 const statusLabels: Record<HealthStatus, string> = {
@@ -44,17 +47,6 @@ const areaCategoryMatchers: Record<string, RegExp[]> = {
   "Сеть": [/interconnect/i, /network/i, /public/i, /management/i, /link/i, /сет/i],
 };
 
-function healthToTone(status: HealthStatus): CardPakTone {
-  if (status === "critical") return "critical";
-  if (status === "warning") return "warning";
-  if (status === "unknown") return "unavailable";
-  return "success";
-}
-
-function toneToGroupTone(tone: CardPakTone): "success" | "warning" | "critical" | "unavailable" {
-  return tone;
-}
-
 function getAreaTone(pak: PAKHealth, areaLabel: string): "success" | "warning" | "critical" | "unavailable" {
   const patterns = areaCategoryMatchers[areaLabel] ?? [];
   if (!patterns.length) return "unavailable";
@@ -66,7 +58,7 @@ function getAreaTone(pak: PAKHealth, areaLabel: string): "success" | "warning" |
   });
 
   if (!matchedNodes.length) return "unavailable";
-  return toneToGroupTone(healthToTone(worstStatus(matchedNodes.map((node: NodeHealth) => node.status))));
+  return healthStatusToUiTone(worstStatus(matchedNodes.map((node: NodeHealth) => node.status)));
 }
 
 /** Список ПАК фиксированный; фильтры тулбара только подсвечивают совпадения, карточки не скрываются. */
@@ -156,11 +148,9 @@ const HealthMonitorNative: React.FC = () => {
             {mockPaks.map((pak) => {
               const isActive = selectedPak?.id === pak.id;
               const matchesToolbar = pakMatchesToolbarFilters(pak, activeStatuses, searchQuery);
-              const pakTone = healthToTone(pak.status);
+              const pakTone = healthStatusToCardPakTone(pak.status);
               const displayGroups = pak.groups.slice(0, DISPLAY_GROUP_COUNT);
-              const groupsItems = displayGroups.map((group) =>
-                toneToGroupTone(healthToTone(group.status)),
-              );
+              const groupsItems = displayGroups.map((group) => healthStatusToUiTone(group.status));
               const dotNodes = displayGroups.flatMap((group) => group.nodes);
               const nodesTotal = dotNodes.length;
               const nodeCounters = dotNodes.reduce<Record<HealthStatus, number>>(

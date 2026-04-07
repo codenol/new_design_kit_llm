@@ -2,11 +2,11 @@ import React, { useState } from "react";
 
 import { Button } from "primereact/button";
 
-import { InputText } from "primereact/inputtext";
-
-import { ChevronsUpDown, Search } from "lucide-react";
+import { ChevronsUpDown } from "lucide-react";
 
 import classNames from "classnames";
+
+import { SearchField } from "../SearchField";
 
 import "./drawerBody.scss";
 
@@ -44,21 +44,22 @@ export const DrawerBody: React.FC<DrawerBodyProps> = ({
     else setUncontrolledSearch(v);
   };
 
+  const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    handleSearchChange(e);
+  };
+
   return (
     <div className={classNames("uikit-drawer-body", className)}>
       <div className="uikit-drawer-body__inner">
         <div className="uikit-drawer-body__toolbar">
-          <div className="uikit-drawer-body__search-wrap">
-            <InputText
-              value={searchValue}
-              onChange={handleSearchChange}
-              placeholder={searchPlaceholder}
-              className="uikit-drawer-body__search"
-            />
-            <span className="uikit-drawer-body__search-icon" aria-hidden>
-              <Search size={16} strokeWidth={2} />
-            </span>
-          </div>
+          <SearchField
+            wrapClassName="uikit-drawer-body__search-wrap"
+            inputClassName="uikit-drawer-body__search"
+            iconClassName="uikit-drawer-body__search-icon"
+            value={searchValue}
+            onChange={onInputChange}
+            placeholder={searchPlaceholder}
+          />
           {toolbarExtra != null ? (
             <div className="uikit-drawer-body__toolbar-extra">{toolbarExtra}</div>
           ) : null}

@@ -1,23 +1,13 @@
 import type { HealthStatus, NodeHealth, LowLevelIndicatorHealth } from "./model/types";
 import { worstStatus } from "./model/healthRules";
+import { healthStatusToUiTone, type HealthUiTone } from "./model/statusTone";
 
 /** Порядок секций как в макете (дроер СХД: сначала Узлы, затем VIP и полки), остальные по алфавиту */
 const CATEGORY_ORDER = ["Узлы", "VIP-адрес", "Ноды", "Дисковые полки", "БД"];
 
-export type DetailTone = "success" | "warning" | "critical" | "unavailable";
+export type DetailTone = HealthUiTone;
 
-export function healthStatusToTone(status: HealthStatus): DetailTone {
-  switch (status) {
-    case "ok":
-      return "success";
-    case "warning":
-      return "warning";
-    case "critical":
-      return "critical";
-    default:
-      return "unavailable";
-  }
-}
+export const healthStatusToTone = healthStatusToUiTone;
 
 export function sortCategoryEntries(
   entries: [string, NodeHealth[]][],

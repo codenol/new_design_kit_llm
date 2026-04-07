@@ -201,7 +201,6 @@ export const TemplateSettingsDialog: React.FC<Props> = ({
       className="hm-template-dialog"
       header="Настройка шаблонов"
       visible={visible}
-      style={{ width: "960px", maxWidth: "min(960px, 95vw)" }}
       onHide={onHide}
       footer={footer}
       draggable={false}

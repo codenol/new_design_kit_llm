@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { ConfirmDialog } from "primereact/confirmdialog";
 import { UIkitProvider } from "../design-system/uikit/UIkitProvider";
 import HealthMonitorPage from "./pages/HealthMonitorPage";
+import Showcase from "./pages/Showcase";
 import { Agentation } from "agentation";
 import "./App.scss";
 
@@ -61,6 +62,7 @@ const App: React.FC = () => (
       <Routes>
         <Route path="/" element={<Navigate to="/health-monitor" replace />} />
         <Route path="/health-monitor" element={<HealthMonitorPage />} />
+        <Route path="/showcase" element={<Showcase />} />
         <Route path="*" element={<Navigate to="/health-monitor" replace />} />
       </Routes>
       <Agentation />

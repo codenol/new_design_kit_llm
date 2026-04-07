@@ -20,7 +20,7 @@ interface Props {
   selectedGroupId?: string;
 }
 
-/** Ширина карточки группы — [card group](https://www.figma.com/design/DJhDpzg0kwETePJM8IBduy) */
+/** Согласовано с `--hm-flow-card-width` в design-system/tokens/_healthMonitor.scss */
 const CARD_W = 370;
 /** Базовая высота под CardGroup (до 5 строк метрик в дочерних группах) */
 const CARD_H = 480;

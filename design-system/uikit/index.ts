@@ -33,3 +33,5 @@ export { HostsCard } from './HostsCard';
 export type { HostsCardProps, HostsCardTone } from './HostsCard';
 export { DrawerBody } from './DrawerBody';
 export type { DrawerBodyProps } from './DrawerBody';
+export { SearchField } from './SearchField';
+export type { SearchFieldProps } from './SearchField';

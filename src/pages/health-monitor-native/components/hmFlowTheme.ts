@@ -1,21 +1,18 @@
 import type { HealthStatus } from "../model/types";
 
-/**
- * Hex-значения статусов в духе [:root](design-system/tokens/_theme.scss) (светлая тема).
- * Нужны для градиентов/color-mix в React Flow и GroupNode (inline styles).
- */
-export const STATUS_HEX: Record<HealthStatus, string> = {
-  ok: "#399D45",
-  warning: "#E19109",
-  critical: "#E53334",
-  unknown: "#808286",
+/** Цвет stroke рёбер графа — только CSS-переменные из [tokens/_healthMonitor.scss](design-system/tokens/_healthMonitor.scss). */
+const EDGE_STROKE: Record<HealthStatus, string> = {
+  ok: "var(--hm-flow-edge-stroke-ok)",
+  warning: "var(--hm-flow-edge-stroke-warning)",
+  critical: "var(--hm-flow-edge-stroke-critical)",
+  unknown: "var(--hm-flow-edge-stroke-unknown)",
 };
 
 export function getStatusColor(status: HealthStatus): string {
-  return STATUS_HEX[status];
+  return EDGE_STROKE[status];
 }
 
-/** Поверхности и текст для светлой темы — CSS variables */
+/** Поверхности панели React Flow — CSS variables */
 export const HM = {
   surface: "var(--surface-card)",
   surfaceMuted: "var(--back-surface)",
@@ -25,5 +22,5 @@ export const HM = {
   textPrimary: "var(--content-text-primary)",
   textSecondary: "var(--content-text-secondary)",
   link: "var(--link-color)",
-  shadow: "0 4px 16px rgb(0 0 0 / 8%)",
+  shadow: "var(--hm-flow-controls-shadow)",
 } as const;

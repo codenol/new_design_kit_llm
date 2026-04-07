@@ -1,7 +1,6 @@
 import React from "react";
-import { Search } from "lucide-react";
-import { InputText } from "primereact/inputtext";
 import classNames from "classnames";
+import { SearchField } from "uikit";
 
 export interface HmSearchFieldProps {
   value: string;
@@ -21,21 +20,16 @@ export const HmSearchField: React.FC<HmSearchFieldProps> = ({
   id,
   "aria-label": ariaLabel,
 }) => (
-  <div
-    className={classNames("hm-search-field", {
+  <SearchField
+    wrapClassName={classNames("hm-search-field", {
       "hm-search-field--toolbar": variant === "toolbar",
     })}
-  >
-    <InputText
-      id={id}
-      value={value}
-      onChange={onChange}
-      placeholder={placeholder}
-      className="hm-search-field__input"
-      aria-label={ariaLabel}
-    />
-    <span className="hm-search-field__icon" aria-hidden>
-      <Search size={16} strokeWidth={2} />
-    </span>
-  </div>
+    inputClassName="hm-search-field__input p-inputtext"
+    iconClassName="hm-search-field__icon"
+    value={value}
+    onChange={onChange}
+    placeholder={placeholder}
+    id={id}
+    aria-label={ariaLabel}
+  />
 );

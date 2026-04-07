@@ -1,25 +1,19 @@
 import classNames from "classnames";
 import { Handle, Position } from "@xyflow/react";
 import type { NodeProps } from "@xyflow/react";
-import { CardGroup, type CardGroupTone } from "uikit";
+import { CardGroup } from "uikit";
 import type { GroupHealth, HealthStatus, NodeHealth } from "../model/types";
+import { healthStatusToCardGroupTone, healthStatusToUiTone } from "../model/statusTone";
 
 export interface GroupNodeData {
   group: GroupHealth;
   onSelect: (group: GroupHealth) => void;
 }
 
-function healthToCardGroupTone(status: HealthStatus): CardGroupTone {
-  if (status === "critical") return "critical";
-  if (status === "warning") return "warning";
-  if (status === "unknown") return "unavailable";
-  return "success";
-}
-
 function nodePillTone(
   status: HealthStatus,
 ): "success" | "warning" | "critical" | "unavailable" {
-  return healthToCardGroupTone(status);
+  return healthStatusToUiTone(status);
 }
 
 const STATUS_SHORT: Record<HealthStatus, string> = {
@@ -64,7 +58,7 @@ export function GroupNode({ data }: NodeProps) {
 
       <CardGroup
         className="hm-card-group-canvas"
-        tone={healthToCardGroupTone(group.status)}
+        tone={healthStatusToCardGroupTone(group.status)}
         title={`Группа: ${group.name}`}
         description={group.description?.trim() || undefined}
         nodesTotal={nodesTotalHeader}
